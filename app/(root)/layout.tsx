@@ -36,24 +36,7 @@ const components: { title: string; href: string; description: string }[] = [
         href: "/docs/primitives/progress",
         description:
             "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
+    }
 ]
 
 const ListItem = React.forwardRef<
@@ -96,11 +79,11 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
     return (
         <main className="w-full h-full mx-auto bg-background">
             <div className="flex flex-col w-full">
-                <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[99] border-b border-dashed flex flex-row justify-between items-center bg-background/50">
+                <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[99] border-b md:border-dashed flex flex-row justify-between items-center bg-background/50">
                     <NavigationMenu>
                         <NavigationMenuList>
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger className="font-semibold text-muted-foreground">Features</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className="font-semibold text-muted-foreground">Languae</NavigationMenuTrigger>
                                 <NavigationMenuContent>
 
                                     <ul className="grid w-xs gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -121,10 +104,12 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                     <NavigationMenu className="hidden md:flex">
                         <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center bg-secondary">
                             <NavigationMenuItem>
-                                <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <House className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Home</div>
-                                </Button>
+                                <Link href="/">
+                                    <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                        <House className="stroke-muted-foreground stroke-2" />
+                                        <div className="text-xs font-semibold text-muted-foreground">Home</div>
+                                    </Button>
+                                </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
@@ -133,10 +118,12 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 </Button>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <Tv className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Course</div>
-                                </Button>
+                                <Link href="/course">
+                                    <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                        <Tv className="stroke-muted-foreground stroke-2" />
+                                        <div className="text-xs font-semibold text-muted-foreground">Course</div>
+                                    </Button>
+                                </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
@@ -162,20 +149,24 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </Toggle>
                     </div>
                 </nav>
-                <nav className="w-full fixed bottom-0 left-0 block md:hidden">
+                <nav className="w-full fixed bottom-0 left-0 block md:hidden z-[99]">
                     <div className="flex justify-between items-center bg-secondary border rounded-full py-3 px-3 mx-1.5 mb-3">
-                        <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                            <House className="stroke-muted-foreground stroke-2" />
-                            <div className="text-xs font-semibold text-muted-foreground">Home</div>
-                        </Button>
+                        <Link href="/">
+                            <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                <House className="stroke-muted-foreground stroke-2" />
+                                <div className="text-xs font-semibold text-muted-foreground">Home</div>
+                            </Button>
+                        </Link>
                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                             <Briefcase className="stroke-muted-foreground stroke-2" />
                             <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
                         </Button>
-                        <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                            <Tv className="stroke-muted-foreground stroke-2" />
-                            <div className="text-xs font-semibold text-muted-foreground">Course</div>
-                        </Button>
+                        <Link href="/course">
+                            <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                <Tv className="stroke-muted-foreground stroke-2" />
+                                <div className="text-xs font-semibold text-muted-foreground">Course</div>
+                            </Button>
+                        </Link>
                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                             <BookOpen className="stroke-muted-foreground stroke-2" />
                             <div className="text-xs font-semibold text-muted-foreground">Test Series</div>
@@ -187,7 +178,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                     </div>
                 </nav>
                 {children}
-                <div className="py-4 px-4 border-t">
+                <div className="pb-24 md:pb-3 pt-3 px-4 border-t">
                     <div className="max-w-md mx-auto space-y-4">
                         <div className="flex justify-center gap-4 text-sm text-muted-foreground">
                             <Link href="/" className="hover:text-foreground font-semibold">Privacy Policy</Link>
