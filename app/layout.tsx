@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Manjari } from "next/font/google";
+import { Manrope, Montserrat, Quicksand } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 
-const manjariSans = Manjari({
+const manjariSans = Manrope({
   variable: "--font-manjari-sans",
-  subsets: ["latin"],
-  weight: ["100", "400", "700"]
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {

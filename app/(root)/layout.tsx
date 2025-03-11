@@ -112,10 +112,12 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <Briefcase className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
-                                </Button>
+                                <Link href="/job">
+                                    <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                        <Briefcase className="stroke-muted-foreground stroke-2" />
+                                        <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
+                                    </Button>
+                                </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <Link href="/course">
@@ -161,10 +163,12 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 <div className="text-xs font-semibold text-muted-foreground">Home</div>
                             </Button>
                         </Link>
-                        <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                            <Briefcase className="stroke-muted-foreground stroke-2" />
-                            <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
-                        </Button>
+                        <Link href="/job">
+                            <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
+                                <Briefcase className="stroke-muted-foreground stroke-2" />
+                                <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
+                            </Button>
+                        </Link>
                         <Link href="/course">
                             <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                 <Tv className="stroke-muted-foreground stroke-2" />

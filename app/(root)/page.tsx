@@ -20,13 +20,13 @@ export default function Home() {
             <div className="flex flex-col md:pt-32 w-full pb-4 bg-primary/5">
                 <div className="w-full py-6 pb-10 text-center flex-col gap-6 hidden md:flex">
                     <h1>
-                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-semibold tracking-tighter md:text-center text-5xl md:text-7xl">
+                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-extrabold tracking-tighter md:text-center text-5xl md:text-5xl">
                             ALL In One App
                             <br />
                             For Assamese Students
                         </span>
                     </h1>
-                    <p className="max-w-2xl text-center font-bold text-foreground text-sm md:text-lg mx-auto px-4 sm:px-0">
+                    <p className="max-w-2xl text-center text-muted-foreground md:text-sm mx-auto px-4 sm:px-0">
                         Simplify complex topics ➜ Create study notes ➜ Generate Question Papers ➜ Simplify & Translate PDFs ➜ Generate quizzes & flashcards
                     </p>
                     <div className="w-xs mx-auto">
@@ -63,7 +63,7 @@ export default function Home() {
                     </Carousel>
                 </div>
                 <div className="pt-5 md:pt-9 hidden md:flex">
-                    <VelocityScroll defaultVelocity={2} className="text-3xl md:text-7xl font-extrabold" >
+                    <VelocityScroll defaultVelocity={2} className="text-3xl md:text-5xl font-extrabold" >
                         <span>
                             <span className="mx-2 text-gray-400">|</span>
                             <span className="bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-400 dark:to-amber-300 text-transparent bg-clip-text">Free Mock Test</span>
