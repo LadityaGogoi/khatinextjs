@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function Course() {
     return (
-        <div className="min-h-screen flex flex-col bg-primary/5">
-            <div className="flex flex-col lg:flex-row mx-auto gap-2 mt-3 md:mt-24">
+        <div className="flex flex-col bg-primary/5 my-3">
+            <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
                 <div className="relative w-xs lg:w-md">
                     <HeroVideoDialog
                         className="block dark:hidden"
@@ -48,7 +48,7 @@ export default function Course() {
             <div className="flex flex-col lg:flex-row mx-auto gap-2 mt-5">
                 <div className="w-xs lg:w-md">
                     <div className="flex flex-col gap-2">
-                        <Link href="/course/123">
+                        <Link href="/course/arithmetic">
                             <div className="w-xs lg:w-md py-3 bg-secondary border rounded-md">
                                 <div className="w-11/12 mx-auto flex flex-col gap-2 justify-center items-center">
                                     <div className="text-sm font-semibold">Apptitute & Comprehension</div>

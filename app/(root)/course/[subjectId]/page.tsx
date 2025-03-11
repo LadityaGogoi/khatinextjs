@@ -1,25 +1,44 @@
 import { BookOpen, FileQuestion, Timer, Loader } from "lucide-react";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 import Link from "next/link";
 
 const lessons = [
     { id: 1, title: "Math Basics", topics: 5, time: "90 Minutes", progress: 40 },
-    { id: 2, title: "Logical Reasoning", topics: 8, time: "120 Minutes", progress: 25 },
-    { id: 3, title: "English Grammar", topics: 10, time: "60 Minutes", progress: 75 },
-    { id: 4, title: "General Science", topics: 7, time: "110 Minutes", progress: 50 },
-    { id: 5, title: "History & Polity", topics: 6, time: "100 Minutes", progress: 10 },
-    { id: 6, title: "Aptitude & Comprehension", topics: 12, time: "150 Minutes", progress: 65 },
 ];
 
 const Page = async ({ params }: { params: Promise<{ subjectId: string }> }) => {
     const id = (await params).subjectId;
 
     return (
-        <div className="min-h-screen flex flex-col bg-primary/5">
-            <div className="flex flex-col mt-3 md:mt-24 w-full md:w-2xl lg:w-5xl mx-auto">
-                <div className="text-base font-bold text-center text-foreground mb-3">Lesson List</div>
+        <div className="flex flex-col bg-primary/5">
+            <div className="flex flex-col my-3 md:mt-24 w-full md:w-2xl lg:w-5xl mx-auto">
+                <div className="w-xs md:w-full mx-auto mb-3">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/course">course</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>{id}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                     {lessons.map((lesson) => (
-                        <Link key={lesson.id} href="/course/123/233">
+                        <Link key={lesson.id} href="/course/arithmetic/lcm">
                             <div className="w-xs flex flex-row gap-2 justify-between items-center bg-secondary rounded-md border py-3 px-1.5">
                                 <div className="p-1.5 bg-primary/20 rounded-full">
                                     <Loader size={32} />

@@ -1,17 +1,44 @@
 import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 import { Button } from "@/components/ui/button";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Bookmark, BookOpen, FileQuestion, Lock, Search, Video } from "lucide-react";
 
 const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId: string }> }) => {
-    const id = (await params).subjectId;
+    const subject = (await params).subjectId;
     const lesson = (await params).lessonId
 
     return (
-        <div className="min-h-screen flex flex-col bg-primary/5 pb-3">
-            <div className="flex flex-col lg:flex-row mx-auto gap-2 mt-3 md:mt-24">
-                <div className="relative w-xs lg:w-md">
+        <div className="flex flex-col bg-primary/5 pb-3">
+            <div className="flex flex-col lg:flex-row mx-auto gap-2 my-3 md:mt-24">
+                <div className="relative w-xs lg:w-md flex flex-col gap-2">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/course">course</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href={`/course/${subject}`}>{subject}</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>{lesson}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
                     <HeroVideoDialog
                         className="block dark:hidden"
                         animationStyle="top-in-bottom-out"
