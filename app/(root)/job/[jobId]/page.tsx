@@ -23,7 +23,7 @@ const Page = async ({ params }: { params: Promise<{ jobId: string }> }) => {
     const id = (await params).jobId
     return (
         <div className="flex flex-col bg-primary/5">
-            <div className="flex flex-col lg:flex-row mx-auto gap-5 items-center my-3 md:mt-24">
+            <div className="flex flex-col lg:flex-row mx-auto gap-5 items-center lg:items-start my-3 md:mt-24">
                 <div className="w-xs flex flex-col justify-center items-center">
                     <div className="w-full mb-2">
                         <Breadcrumb>
@@ -71,7 +71,7 @@ const Page = async ({ params }: { params: Promise<{ jobId: string }> }) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-xs flex flex-col gap-2 justify-center items-center">
+                <div className="w-xs lg:w-md flex flex-col gap-2 justify-center items-center">
                     <div className="text-sm text-muted-foreground">
                         State Level Police Recruitment Board (SLPRB) already conducted the Physical Standard Test (PST), Physical Efficiency Test (PET), Trade Proficiency Test (TPT) and Written Test (CWT 2025) for the recruitment of various posts in the cadre of Constable, Sub-Inspector and others under Assam Police, APRO, Assam Commando Battalions, DGCD & CGHG, Prison Department and Directorate of Forensic Science.
                     </div>

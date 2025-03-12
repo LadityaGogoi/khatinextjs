@@ -20,19 +20,19 @@ import { Toggle } from "@/components/ui/toggle";
 
 const components: { title: string; href: string; description: string }[] = [
     {
-        title: "Alert Dialog",
+        title: "Assamese Language",
         href: "/docs/primitives/alert-dialog",
         description:
             "A modal dialog that interrupts the user with important content and expects a response.",
     },
     {
-        title: "Hover Card",
+        title: "English Langauge",
         href: "/docs/primitives/hover-card",
         description:
             "For sighted users to preview content available behind a link.",
     },
     {
-        title: "Progress",
+        title: "Hindi Language",
         href: "/docs/primitives/progress",
         description:
             "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
@@ -146,7 +146,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </NavigationMenuList>
                     </NavigationMenu>
                     <div className="flex flex-row justify-center items-center gap-2">
-                        <div>Pricing</div>
+                        <div className="text-sm text-muted-foreground hover:text-foreground">View Pricing</div>
                         <Toggle
                             pressed={theme === "dark"}
                             onPressedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
