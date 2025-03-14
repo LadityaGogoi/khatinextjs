@@ -7,8 +7,8 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             <div className="min-h-screen flex flex-col">
                 <nav className="py-4 px-4 border-b">
                     <div className="max-w-md mx-auto flex justify-between items-center">
-                        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">➜ Return to Home</Link>
-                        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">View Pricing</Link>
+                        <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">➜ Auth Page</Link>
+                        <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground">View Pricing</Link>
                     </div>
                 </nav>
                 {children}

@@ -1,3 +1,6 @@
+'use client'
+
+import { SignIn } from "@/api/user"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -9,9 +12,45 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { redirect } from "next/navigation"
+import { ChangeEvent, FormEvent, useState } from "react";
+
+interface FormData {
+    email: string;
+    password: string;
+}
 
 
-const Page = () => {
+const Page: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
+        email: "gogoiladitya@gmail.com",
+        password: "12345678"
+    })
+    const [loading, setLoading] = useState(false)
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.id]: e.target.value
+        }))
+    }
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const result = await SignIn(formData)
+
+        if (result.status === "success") {
+            console.log(result.user)
+        } else {
+            console.log(result.status)
+        }
+
+        setLoading(false);
+        redirect('/')
+    }
+
     return (
         <div className="flex-1 flex items-center justify-center p-4">
             <div className="flex flex-col gap-6 w-full max-w-sm">
@@ -21,7 +60,7 @@ const Page = () => {
                         <CardDescription>Enter your email below to login to your account</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="grid gap-6">
                                 <div className="flex flex-col gap-4">
                                     <Button variant="outline" className="w-full">
@@ -40,11 +79,11 @@ const Page = () => {
                                 <div className="grid gap-6">
                                     <div className="grid gap-2">
                                         <Label htmlFor="email">Email Address</Label>
-                                        <Input id="email" type="email" placeholder="example@gmail.com" required />
+                                        <Input id="email" type="email" placeholder="example@gmail.com" required onChange={handleChange} />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="email">Password</Label>
-                                        <Input id="password" type="password" placeholder="Enter Your Password" required />
+                                        <Label htmlFor="password">Password</Label>
+                                        <Input id="password" type="password" placeholder="Enter Your Password" required onChange={handleChange} />
                                     </div>
                                     <div className="text-center text-sm">
                                         Don&apos;t have an account?{" "}
@@ -54,14 +93,14 @@ const Page = () => {
                                     </div>
                                 </div>
                             </div>
+                            <CardFooter>
+                                <Button disabled={loading} type="submit" variant="default" className="w-full bg-primary">
+                                    Continue
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12L10 18V6L16 12Z"></path></svg>
+                                </Button>
+                            </CardFooter>
                         </form>
                     </CardContent>
-                    <CardFooter>
-                        <Button variant="default" className="w-full bg-primary">
-                            Continue
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12L10 18V6L16 12Z"></path></svg>
-                        </Button>
-                    </CardFooter>
                 </Card>
             </div>
         </div>

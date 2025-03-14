@@ -9,7 +9,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { AnimatedBeamMultipleOutputDemo } from "@/components/custom/animated-beam";
 import Link from "next/link";
@@ -28,14 +28,14 @@ export default function Home() {
                             For Assamese Students
                         </span>
                     </h1>
-                    <p className="max-w-2xl text-center text-muted-foreground text-sm mx-auto px-4 sm:px-0">
+                    <p className="max-w-2xl text-center text-muted-foreground text-sm font-semibold mx-auto px-4 sm:px-0">
                         Simplify complex topics ➜ Create study notes ➜ Generate Question Papers ➜ Simplify & Translate PDFs ➜ Generate quizzes & flashcards
                     </p>
                     <div className="w-xs mx-auto">
                         <a href="#">
-                            <Button variant="default" size="lg" className="w-full bg-primary text-sm font-medium">
+                            <Button variant="default" size="lg" className="w-full bg-primary text-sm font-semibold">
                                 Download Khati App
-                                <FolderDown />
+                                <FolderDown className="stroke-3" />
                             </Button>
                         </a>
                     </div>
@@ -68,7 +68,7 @@ export default function Home() {
                     <VelocityScroll defaultVelocity={2} className="text-3xl md:text-5xl font-extrabold" >
                         <span>
                             <span className="mx-2 text-gray-400">|</span>
-                            <span className="bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-400 dark:to-amber-300 text-transparent bg-clip-text">Free Mock Test</span>
+                            <span className="bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-400 dark:to-amber-300 text-transparent bg-clip-text md:leading-normal">Free Mock Test</span>
                             <span className="mx-2 text-gray-400">|</span>
                             <span className="bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-300 text-transparent bg-clip-text">Job Board</span>
                             <span className="mx-2 text-gray-400">|</span>
@@ -78,7 +78,7 @@ export default function Home() {
                         </span>
                     </VelocityScroll>
                 </div>
-                <div className="flex flex-col md:flex-row justify-center items-center">
+                <div className="w-full md:w-2xl lg:w-5xl mx-auto flex flex-col md:flex-row justify-start items-center">
                     <div className="hidden md:block w-1/2">
                         <AnimatedBeamMultipleOutputDemo />
                     </div>
@@ -113,68 +113,38 @@ export default function Home() {
                     <div className="text-center font-bold text-lg text-foreground my-3">Latest News</div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                         <Link href="/news/123">
-                            <div className="w-xs flex flex-col gap-1 bg-secondary rounded-md border py-3 px-1.5">
-                                <div className="flex flex-row justify-start items-center gap-2">
-                                    <div className="p-1.5 bg-primary/10 rounded-full">
-                                        <Image src={images.Logo} alt="logo" className="w-7 h-7" />
-                                    </div>
-                                    <div className="text-xs font-bold">Khati News</div>
-                                    <div className="text-xs text-muted-foreground">Current Affairs</div>
-                                </div>
-                                <div className="flex flex-row justify-between items-center">
-                                    <div className="text-sm font-bold line-clamp-3">Forced into cyber crime, 283 Indians rescued from Myanmar-Thailand border</div>
-                                    <div className="w-48 h-16 relative">
-                                        <Image src={images.Thumbnail} layout="fill" alt="logo" className="object-cover rounded-md" />
-                                    </div>
-                                </div>
-                                <div className="flex flex-row justify-between items-center">
+                            <Card className="p-0">
+                                <CardContent className="w-xs flex flex-col gap-1 p-3">
                                     <div className="flex flex-row justify-start items-center gap-2">
-                                        <div className="flex flex-row justify-start items-center">
-                                            <Timer className="w-4 h-4 stroke-muted-foreground" />
-                                            <div className="text-sm text-muted-foreground">5 days ago</div>
+                                        <div className="p-1.5 bg-primary/10 rounded-full">
+                                            <Image src={images.Logo} alt="logo" className="w-7 h-7" />
                                         </div>
-                                        <div className="flex flex-row justify-start items-center">
+                                        <div className="text-xs font-bold">Khati News</div>
+                                        <div className="text-xs text-muted-foreground">Current Affairs</div>
+                                    </div>
+                                    <div className="flex flex-row justify-between items-center">
+                                        <div className="text-sm font-bold line-clamp-3">Forced into cyber crime, 283 Indians rescued from Myanmar-Thailand border</div>
+                                        <div className="w-48 h-16 relative">
+                                            <Image src={images.Thumbnail} layout="fill" alt="logo" className="object-cover rounded-md" />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row justify-between items-center">
+                                        <div className="flex flex-row justify-start items-center gap-2">
                                             <div className="flex flex-row justify-start items-center">
-                                                <Eye className="w-4 h-4 stroke-muted-foreground" />
-                                                <div className="text-sm text-muted-foreground">3 minutes</div>
+                                                <Timer className="w-4 h-4 stroke-muted-foreground" />
+                                                <div className="text-sm text-muted-foreground">5 days ago</div>
+                                            </div>
+                                            <div className="flex flex-row justify-start items-center">
+                                                <div className="flex flex-row justify-start items-center">
+                                                    <Eye className="w-4 h-4 stroke-muted-foreground" />
+                                                    <div className="text-sm text-muted-foreground">3 minutes</div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <Bookmark />
                                     </div>
-                                    <Bookmark />
-                                </div>
-                            </div>
-                        </Link>
-                        <Link href="/news/123">
-                            <div className="w-xs flex flex-col gap-1 bg-secondary rounded-md border py-3 px-1.5">
-                                <div className="flex flex-row justify-start items-center gap-2">
-                                    <div className="p-1.5 bg-primary/10 rounded-full">
-                                        <Image src={images.Logo} alt="logo" className="w-7 h-7" />
-                                    </div>
-                                    <div className="text-xs font-bold">Khati News</div>
-                                    <div className="text-xs text-muted-foreground">Current Affairs</div>
-                                </div>
-                                <div className="flex flex-row justify-between items-center">
-                                    <div className="text-sm font-bold line-clamp-3">Forced into cyber crime, 283 Indians rescued from Myanmar-Thailand border</div>
-                                    <div className="w-48 h-16 relative">
-                                        <Image src={images.Thumbnail} layout="fill" alt="logo" className="object-cover rounded-md" />
-                                    </div>
-                                </div>
-                                <div className="flex flex-row justify-between items-center">
-                                    <div className="flex flex-row justify-start items-center gap-2">
-                                        <div className="flex flex-row justify-start items-center">
-                                            <Timer className="w-4 h-4 stroke-muted-foreground" />
-                                            <div className="text-sm text-muted-foreground">5 days ago</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center">
-                                            <div className="flex flex-row justify-start items-center">
-                                                <Eye className="w-4 h-4 stroke-muted-foreground" />
-                                                <div className="text-sm text-muted-foreground">3 minutes</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Bookmark />
-                                </div>
-                            </div>
+                                </CardContent>
+                            </Card>
                         </Link>
                     </div>
                 </div>

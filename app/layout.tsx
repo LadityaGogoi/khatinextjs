@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Manrope, Montserrat, Quicksand } from "next/font/google";
+import { Manjari, Manrope, Montserrat, Quicksand } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
+import QueryProvider from "@/context/query-provider";
 
-const manjariSans = Manrope({
-  variable: "--font-manjari-sans",
-  subsets: ["latin"]
+const manropeSans = Manjari({
+  variable: "--font-manrope-sans",
+  subsets: ["latin"],
+  weight: ["100", "400", "700"]
 });
 
 export const metadata: Metadata = {
@@ -21,16 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${manjariSans.variable} antialiased`}
+        className={`${manropeSans.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

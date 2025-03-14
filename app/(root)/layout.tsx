@@ -17,6 +17,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Toggle } from "@/components/ui/toggle";
+import { redirect } from "next/navigation";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -69,12 +70,15 @@ ListItem.displayName = "ListItem"
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
+    // const [isLogged, setIsLogged] = useState(true)
 
     useEffect(() => {
         setMounted(true)
     }, [])
 
     if (!mounted) return null
+
+    // if (!isLogged) redirect('/login')
 
     return (
         <main className="w-full h-full mx-auto bg-background">
@@ -102,7 +106,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </NavigationMenuList>
                     </NavigationMenu>
                     <NavigationMenu className="hidden md:flex">
-                        <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center bg-secondary">
+                        <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center">
                             <NavigationMenuItem>
                                 <Link href="/">
                                     <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
@@ -146,7 +150,9 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </NavigationMenuList>
                     </NavigationMenu>
                     <div className="flex flex-row justify-center items-center gap-2">
-                        <div className="text-sm text-muted-foreground hover:text-foreground">View Pricing</div>
+                        <Link href="/pricing">
+                            <div className="text-sm text-muted-foreground hover:text-foreground">Upgrade</div>
+                        </Link>
                         <Toggle
                             pressed={theme === "dark"}
                             onPressedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -156,7 +162,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                     </div>
                 </nav>
                 <nav className="w-full fixed bottom-0 left-0 block md:hidden z-[99]">
-                    <div className="flex justify-between items-center bg-secondary border rounded-full py-3 px-3 mx-1.5 mb-3">
+                    <div className="flex justify-between items-center bg-background/50 backdrop-blur-md border rounded-full py-3 px-3 mx-1.5 mb-3">
                         <Link href="/">
                             <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                 <House className="stroke-muted-foreground stroke-2" />

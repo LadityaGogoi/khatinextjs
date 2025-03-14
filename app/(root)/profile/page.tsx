@@ -1,3 +1,6 @@
+'use client'
+
+import { GetUser, SignOut } from "@/api/user"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Bookmark, FileQuestion, Mail, MoveRight, PhoneCall, Settings, User } from "lucide-react"
 
@@ -60,8 +63,8 @@ const Page = () => {
                         <ArrowRight className="stroke-muted-foreground" />
                     </div>
                 </div>
-                <div>
-                    <Button  variant={"destructive"}>Log Out</Button>
+                <div onClick={() => SignOut()}>
+                    <Button variant={"destructive"}>Log Out</Button>
                 </div>
             </div>
         </div>

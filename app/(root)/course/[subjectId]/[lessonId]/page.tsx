@@ -89,8 +89,8 @@ const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId:
                                 <Card>
                                     <CardHeader>
                                         <CardTitle className="flex flex-row justify-between items-center">
-                                            <div>Q. no. 1</div>
-                                            <div className="text-xs font-medium text-primary/50">#generalknowlege</div>
+                                            <div>1/90</div>
+                                            <div className="text-sm font-semibold text-primary">#generalknowlege</div>
                                         </CardTitle>
                                         <CardDescription>Who was the first President of independent India, serving two terms from 1950 to 1962, and played a crucial role in shaping the Indian Constitution as its key contributor?
                                         </CardDescription>
@@ -117,75 +117,7 @@ const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId:
                                         <div>
                                             <Bookmark />
                                         </div>
-                                        <Button>Check Answer</Button>
-                                    </CardFooter>
-                                </Card>
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle className="flex flex-row justify-between items-center">
-                                            <div>Q. no. 1</div>
-                                            <div className="text-xs font-medium text-primary/50">#generalknowlege</div>
-                                        </CardTitle>
-                                        <CardDescription>Who was the first President of independent India, serving two terms from 1950 to 1962, and played a crucial role in shaping the Indian Constitution as its key contributor?
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent className="flex flex-col gap-1.5">
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">A</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr APJ Abdul Kalam</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">B</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr B. R. Ambedkar</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">C</div>
-                                            <div className="text-sm font-medium text-foreground/80">Jawaharlal Nehru</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">D</div>
-                                            <div className="text-sm font-medium text-foreground/80">Sardar Vallabhbhai Patel</div>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="flex justify-between items-center">
-                                        <div>
-                                            <Bookmark />
-                                        </div>
-                                        <Button>Check Answer</Button>
-                                    </CardFooter>
-                                </Card>
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle className="flex flex-row justify-between items-center">
-                                            <div>Q. no. 1</div>
-                                            <div className="text-xs font-medium text-primary/50">#generalknowlege</div>
-                                        </CardTitle>
-                                        <CardDescription>Who was the first President of independent India, serving two terms from 1950 to 1962, and played a crucial role in shaping the Indian Constitution as its key contributor?
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent className="flex flex-col gap-1.5">
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">A</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr APJ Abdul Kalam</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">B</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr B. R. Ambedkar</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">C</div>
-                                            <div className="text-sm font-medium text-foreground/80">Jawaharlal Nehru</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">D</div>
-                                            <div className="text-sm font-medium text-foreground/80">Sardar Vallabhbhai Patel</div>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="flex justify-between items-center">
-                                        <div>
-                                            <Bookmark />
-                                        </div>
-                                        <Button>Check Answer</Button>
+                                        <Button className="text-foreground font-semibold">Check Answer</Button>
                                     </CardFooter>
                                 </Card>
                             </div>
