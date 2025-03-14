@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manjari, Manrope, Montserrat, Quicksand } from "next/font/google";
+import { Manjari } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";

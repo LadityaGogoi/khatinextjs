@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Bookmark, BookOpen, FileQuestion, Lock, Quote, Timer } from "lucide-react"
+import { Bookmark, FileQuestion, Quote, Timer } from "lucide-react"
 import Link from "next/link"
 
 

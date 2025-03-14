@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { BookOpen, FileQuestion, Heart, Landmark, Loader, Lock, Video } from "lucide-react"
+import { BookOpen, FileQuestion, Heart, Landmark, Loader, Lock } from "lucide-react"
 import Link from "next/link"
 
 const TestSeries = () => {

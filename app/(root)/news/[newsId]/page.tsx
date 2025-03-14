@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { images } from "@/constants"
-import { Bookmark, Eye, Heart, Timer, Zap } from "lucide-react"
+import { Eye, Heart, Timer, Zap } from "lucide-react"
 import Image from "next/image"
 
 const Page = async ({ params }: { params: Promise<{ newsId: string }> }) => {

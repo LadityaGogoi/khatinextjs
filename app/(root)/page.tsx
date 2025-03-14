@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Bookmark, BookOpen, Briefcase, DownloadCloud, DownloadIcon, Eye, FileQuestion, FolderDown, Rss, Timer, View } from "lucide-react";
+import { Bookmark, BookOpen, Briefcase, Eye, FileQuestion, FolderDown, Rss, Timer } from "lucide-react";
 import Image from "next/image";
 
 import {
@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/carousel"
 import { Card, CardContent } from "@/components/ui/card";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
-import { AnimatedBeamMultipleOutputDemo } from "@/components/custom/animated-beam";
 import Link from "next/link";
 import { images } from "@/constants";
 
@@ -78,10 +77,7 @@ export default function Home() {
                         </span>
                     </VelocityScroll>
                 </div>
-                <div className="w-full md:w-2xl lg:w-5xl mx-auto flex flex-col md:flex-row justify-start items-center">
-                    <div className="hidden md:block w-1/2">
-                        <AnimatedBeamMultipleOutputDemo />
-                    </div>
+                <div className="w-full md:w-2xl lg:w-5xl mx-auto flex flex-col md:flex-row justify-center items-center">
                     <div className="flex flex-col gap-2 mt-2 md:mt-0">
                         <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50">
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
@@ -125,7 +121,7 @@ export default function Home() {
                                     <div className="flex flex-row justify-between items-center">
                                         <div className="text-sm font-bold line-clamp-3">Forced into cyber crime, 283 Indians rescued from Myanmar-Thailand border</div>
                                         <div className="w-48 h-16 relative">
-                                            <Image src={images.Thumbnail} layout="fill" alt="logo" className="object-cover rounded-md" />
+                                            <Image src={images.Thumbnail} alt="logo" className="rounded-md" />
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-between items-center">

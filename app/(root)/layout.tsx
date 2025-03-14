@@ -1,23 +1,20 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { BookOpen, BookOpenCheck, Briefcase, House, Moon, Sun, Tv, User } from "lucide-react";
+import { BookOpen, Briefcase, House, Moon, Sun, Tv, User } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import {
     NavigationMenu,
     NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Toggle } from "@/components/ui/toggle";
-import { redirect } from "next/navigation";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -70,15 +67,12 @@ ListItem.displayName = "ListItem"
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
-    // const [isLogged, setIsLogged] = useState(true)
 
     useEffect(() => {
         setMounted(true)
     }, [])
 
     if (!mounted) return null
-
-    // if (!isLogged) redirect('/login')
 
     return (
         <main className="w-full h-full mx-auto bg-background">

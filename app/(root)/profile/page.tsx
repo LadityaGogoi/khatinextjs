@@ -1,8 +1,8 @@
 'use client'
 
-import { GetUser, SignOut } from "@/api/user"
+import { SignOut } from "@/api/user"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Bookmark, FileQuestion, Mail, MoveRight, PhoneCall, Settings, User } from "lucide-react"
+import { ArrowRight, Bookmark, FileQuestion, Mail, Settings, User } from "lucide-react"
 
 const Page = () => {
     return (

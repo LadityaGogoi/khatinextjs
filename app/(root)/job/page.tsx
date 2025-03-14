@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Bookmark, Heart, Landmark, Loader, Search, SlidersHorizontal } from "lucide-react"
+import { Bookmark, Landmark, Loader, SlidersHorizontal } from "lucide-react"
 import Link from "next/link"
 
 const Page = () => {

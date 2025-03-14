@@ -1,7 +1,6 @@
 import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription } from "@/components/ui/card";
-import { BookOpen, Building, FileQuestion, Heart, Landmark, Loader, Lock, User } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { BookOpen, FileQuestion, Heart, Landmark, Loader, Lock } from "lucide-react";
 import Link from "next/link";
 
 export default function Course() {
