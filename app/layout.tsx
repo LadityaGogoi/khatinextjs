@@ -3,6 +3,7 @@ import { Manjari } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
+import ContextProgressProvider from "@/context/progress-provider";
 
 const manropeSans = Manjari({
   variable: "--font-manrope-sans",
@@ -26,14 +27,16 @@ export default function RootLayout({
         className={`${manropeSans.variable} antialiased`}
       >
         <QueryProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          <ContextProgressProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </ContextProgressProvider>
         </QueryProvider>
       </body>
     </html>

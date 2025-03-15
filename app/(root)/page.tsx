@@ -1,6 +1,7 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { Bookmark, BookOpen, Briefcase, Eye, FileQuestion, FolderDown, Rss, Timer } from "lucide-react";
-import Image from "next/image";
 
 import {
     Carousel,
@@ -12,10 +13,61 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import Link from "next/link";
-import { images } from "@/constants";
+import { useEffect, useState } from "react";
+import { GetAllNews } from "@/api/news";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
+const NewsCategoriesData = [
+    { id: 0, name: "Trending" },
+    { id: 1, name: "Current Affairs" },
+    { id: 2, name: "Business & Economy" },
+    { id: 3, name: "Technology" },
+    { id: 4, name: "Science & Environment" },
+    { id: 5, name: "Health" },
+    { id: 6, name: "Sports" },
+    { id: 7, name: "Entertainment" },
+    { id: 8, name: "World News" },
+    { id: 9, name: "Education" },
+    { id: 10, name: "Crime & Law" }
+];
 
 
 export default function Home() {
+    const [selectedId, setSelectedId] = useState<number>(1)
+    const [filter, setFilter] = useState<string[]>(["Current Affairs"])
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, refetch } = GetAllNews(filter)
+
+    const news = data?.pages?.flatMap(page => page.news) || []
+
+    useEffect(() => {
+        refetch()
+    }, [filter])
+
+    const timeAgo = (createdAt: string | number | Date): string => {
+        const createdDate = new Date(createdAt);
+        const now = new Date();
+        const diffInSeconds = Math.floor((now.getTime() - createdDate.getTime()) / 1000);
+
+        const units = [
+            { label: "year", seconds: 31536000 },
+            { label: "month", seconds: 2592000 },
+            { label: "week", seconds: 604800 },
+            { label: "day", seconds: 86400 },
+            { label: "hour", seconds: 3600 },
+            { label: "minute", seconds: 60 },
+        ];
+
+        for (const unit of units) {
+            const quotient = Math.floor(diffInSeconds / unit.seconds);
+            if (quotient >= 1) {
+                return quotient === 1 ? `1 ${unit.label} ago` : `${quotient} ${unit.label}s ago`;
+            }
+        }
+
+        return "Just now";
+    };
+
+
     return (
         <div className="w-full">
             <div className="flex flex-col md:pt-32 w-full pb-4 bg-primary/5">
@@ -106,43 +158,94 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex flex-col w-full md:w-2xl lg:w-5xl mx-auto">
-                    <div className="text-center font-bold text-lg text-foreground my-3">Latest News</div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
-                        <Link href="/news/123">
-                            <Card className="p-0">
-                                <CardContent className="w-xs flex flex-col gap-1 p-3">
-                                    <div className="flex flex-row justify-start items-center gap-2">
-                                        <div className="p-1.5 bg-primary/10 rounded-full">
-                                            <Image src={images.Logo} alt="logo" className="w-7 h-7" />
+                    <div className="text-center font-bold text-lg text-foreground mt-3" onClick={() => console.log(news)}>Latest News</div>
+                    <ScrollArea className="whitespace-nowrap">
+                        <div className="flex space-x-4 p-2 mb-3">
+                            {
+                                NewsCategoriesData.map((item, index) => {
+                                    const isSelected = item.id === selectedId
+                                    return (
+                                        <div
+                                            key={index}
+                                            onClick={() => {
+                                                setFilter([item.name])
+                                                setSelectedId(item.id)
+                                            }}
+                                            className={`${isSelected ? 'bg-primary text-white' : 'bg-secondary text-muted-foreground'} rounded-full px-3 py-1.5 cursor-pointer`}>
+                                            {item.name}
                                         </div>
-                                        <div className="text-xs font-bold">Khati News</div>
-                                        <div className="text-xs text-muted-foreground">Current Affairs</div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <ScrollBar className="h-0" orientation="horizontal" />
+                    </ScrollArea>
+                    {
+                        isLoading ?
+                            <div className="flex justify-center items-center w-full">
+                                <span className="animate-spin rounded-full h-6 w-6 border-4 border-primary border-t-transparent"></span>
+                            </div>
+                            :
+                            <>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
+                                    {
+                                        news.map((item, index) => (
+                                            <Link key={index} href={`/news/${item.id}`}>
+                                                <Card className="p-0">
+                                                    <CardContent className="w-xs flex flex-col gap-1 p-3">
+                                                        <div className="flex flex-row justify-start items-center gap-2">
+                                                            <div className="p-1.5 bg-primary/10 rounded-full">
+                                                                <img src={item.creator_image} alt="logo" className="w-7 h-7" />
+                                                            </div>
+                                                            <div className="text-xs font-bold">{item.creator_name}</div>
+                                                            <div className="text-xs text-muted-foreground">{item.tag}</div>
+                                                        </div>
+                                                        <div className="flex flex-row justify-between items-center">
+                                                            <div className="text-sm font-bold line-clamp-3">{item.heading}</div>
+                                                            <div className="w-48 h-16 relative">
+                                                                <img
+                                                                    src={item.image}
+                                                                    className="w-full h-full rounded-md object-cover"
+                                                                    alt="logo"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex flex-row justify-between items-center">
+                                                            <div className="flex flex-row justify-start items-center gap-2">
+                                                                <div className="flex flex-row justify-start items-center">
+                                                                    <Timer className="w-4 h-4 stroke-muted-foreground" />
+                                                                    <div className="text-sm text-muted-foreground">{timeAgo(item.created_at)}</div>
+                                                                </div>
+                                                                <div className="flex flex-row justify-start items-center">
+                                                                    <div className="flex flex-row justify-start items-center">
+                                                                        <Eye className="w-4 h-4 stroke-muted-foreground" />
+                                                                        <div className="text-sm text-muted-foreground">{item.time} minutes</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <Bookmark />
+                                                        </div>
+                                                    </CardContent>
+                                                </Card>
+                                            </Link>
+                                        ))
+                                    }
+                                </div>
+                                {hasNextPage && (
+                                    <div className="flex justify-center my-4">
+                                        <Button
+                                            variant={"outline"}
+                                            className="text-xs"
+                                            size={"sm"}
+                                            onClick={() => fetchNextPage()}
+                                            disabled={isFetchingNextPage}
+                                        >
+                                            {isFetchingNextPage ? 'Loading...' : 'Show More'}
+                                        </Button>
                                     </div>
-                                    <div className="flex flex-row justify-between items-center">
-                                        <div className="text-sm font-bold line-clamp-3">Forced into cyber crime, 283 Indians rescued from Myanmar-Thailand border</div>
-                                        <div className="w-48 h-16 relative">
-                                            <Image src={images.Thumbnail} alt="logo" className="rounded-md" />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-row justify-between items-center">
-                                        <div className="flex flex-row justify-start items-center gap-2">
-                                            <div className="flex flex-row justify-start items-center">
-                                                <Timer className="w-4 h-4 stroke-muted-foreground" />
-                                                <div className="text-sm text-muted-foreground">5 days ago</div>
-                                            </div>
-                                            <div className="flex flex-row justify-start items-center">
-                                                <div className="flex flex-row justify-start items-center">
-                                                    <Eye className="w-4 h-4 stroke-muted-foreground" />
-                                                    <div className="text-sm text-muted-foreground">3 minutes</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <Bookmark />
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Link>
-                    </div>
+                                )}
+                            </>
+                    }
                 </div>
             </div>
         </div>
