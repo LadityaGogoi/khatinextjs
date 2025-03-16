@@ -1,7 +1,4 @@
-'use server'
-
-import { revalidatePath } from "next/cache"
-import { createClient } from "@/utils/supabase/server"
+import { createClient } from "@/utils/supabase/client"
 import { redirect } from "next/navigation";
 
 interface SignUpFormData {
@@ -17,7 +14,7 @@ interface SignInFormData {
 }
 
 export async function SignUp(formData: SignUpFormData) {
-    const supabase = await createClient()
+    const supabase = createClient()
 
     const credentials = {
         username: formData.firstName as string,
@@ -51,7 +48,7 @@ export async function SignUp(formData: SignUpFormData) {
 }
 
 export async function SignIn(formData: SignInFormData) {
-    const supabase = await createClient()
+    const supabase = createClient()
 
     const credentials = {
         email: formData.email as string,

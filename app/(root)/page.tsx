@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GetAllNews } from "@/api/news";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useAuth } from "@/context/auth-provider"
 
 const NewsCategoriesData = [
     { id: 0, name: "Trending" },
@@ -35,6 +36,8 @@ const NewsCategoriesData = [
 export default function Home() {
     const [selectedId, setSelectedId] = useState<number>(1)
     const [filter, setFilter] = useState<string[]>(["Current Affairs"])
+    const { loading, profile } = useAuth()
+
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, refetch } = GetAllNews(filter)
 
     const news = data?.pages?.flatMap(page => page.news) || []
@@ -67,6 +70,16 @@ export default function Home() {
         return "Just now";
     };
 
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">loading...</div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="w-full">
@@ -131,7 +144,7 @@ export default function Home() {
                 </div>
                 <div className="w-full md:w-2xl lg:w-5xl mx-auto flex flex-col md:flex-row justify-center items-center">
                     <div className="flex flex-col gap-2 mt-2 md:mt-0">
-                        <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50">
+                        <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50" onClick={() => console.log(profile)}>
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
                                 <Briefcase className="stroke-primary" />
                             </div>

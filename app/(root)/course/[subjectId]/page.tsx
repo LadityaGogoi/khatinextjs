@@ -1,4 +1,6 @@
-import { BookOpen, FileQuestion, Timer, Loader } from "lucide-react";
+'use client'
+
+import { BookOpen, FileQuestion, Timer } from "lucide-react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -9,13 +11,26 @@ import {
 } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { useParams } from "next/navigation";
+import { useAuth } from "@/context/auth-provider";
+import { GetLessonBySubject } from "@/api/course";
 
-const lessons = [
-    { id: 1, title: "Math Basics", topics: 5, time: "90 Minutes", progress: 40 },
-];
+const Page = () => {
+    const { subjectId } = useParams()
+    const id = Array.isArray(subjectId) ? subjectId[0] : subjectId
+    const { profile } = useAuth()
 
-const Page = async ({ params }: { params: Promise<{ subjectId: string }> }) => {
-    const id = (await params).subjectId;
+    const { data, isLoading } = GetLessonBySubject(id, profile.id)
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">loading...</div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="flex flex-col bg-primary/5">
@@ -32,29 +47,29 @@ const Page = async ({ params }: { params: Promise<{ subjectId: string }> }) => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>{id}</BreadcrumbPage>
+                                <BreadcrumbPage>subject</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
-                    {lessons.map((lesson) => (
-                        <Link key={lesson.id} href="/course/arithmetic/lcm">
+                    {data?.map((lesson, index) => (
+                        <Link key={index} href={`/course/${subjectId}/${lesson.id}`}>
                             <Card className="p-0">
                                 <div className="w-xs flex flex-row gap-2 justify-between items-center p-3">
-                                    <div className="p-1.5 bg-primary/20 rounded-full">
-                                        <Loader size={32} />
+                                    <div className="p-1 bg-primary/10 rounded-full">
+                                        <img src={lesson.image} alt="logo" className="w-9 h-9" />
                                     </div>
                                     <div className="flex-1 flex-col items-start">
-                                        <div className="font-semibold text-base">{lesson.title}</div>
+                                        <div className="font-semibold text-base">{lesson.name}</div>
                                         <div className="flex flex-row w-full justify-between items-center">
                                             <div className="flex flex-row gap-0.5">
                                                 <BookOpen size={16} />
-                                                <div className="text-xs">{lesson.topics} Sub Topics</div>
+                                                <div className="text-xs">{lesson.totalSubtopics} Sub Topics</div>
                                             </div>
                                             <div className="flex flex-row gap-0.5">
                                                 <Timer size={16} />
-                                                <div className="text-xs">{lesson.time}</div>
+                                                <div className="text-xs">{lesson.timeRequired}</div>
                                             </div>
                                             <div className="flex flex-row gap-0.5">
                                                 <FileQuestion size={16} />

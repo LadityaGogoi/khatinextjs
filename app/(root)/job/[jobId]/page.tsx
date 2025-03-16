@@ -28,8 +28,10 @@ const Page = () => {
 
     if (isLoading) {
         return (
-            <div className="w-screen h-screen justify-center items-center bg-primary/5  my-3 md:mt-24">
-                <span className="animate-spin rounded-full h-6 w-6 border-4 border-primary border-t-transparent"></span>
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">loading...</div>
+                </div>
             </div>
         )
     }

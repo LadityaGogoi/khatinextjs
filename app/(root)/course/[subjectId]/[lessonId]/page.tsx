@@ -1,3 +1,5 @@
+'use client'
+
 import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,13 +10,44 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Bookmark, BookOpen, FileQuestion, Search, Video } from "lucide-react";
+import { BookOpen, FileQuestion, Video } from "lucide-react";
+import { useParams } from "next/navigation";
+import { GetLessonDetails, GetLessonQuestionsByType } from "@/api/course";
+import SearchBar from "@/components/custom/SearchBar";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/context/auth-provider";
+import QuestionCard from "@/components/custom/QuestionCard";
 
-const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId: string }> }) => {
-    const subject = (await params).subjectId;
-    const lesson = (await params).lessonId
+const Page = () => {
+    const { profile } = useAuth()
+    const { subjectId, lessonId } = useParams()
+    const [filters, setFilters] = useState<string[]>([])
+    const [tab, setTab] = useState("All")
+    const subject = Array.isArray(subjectId) ? subjectId[0] : subjectId
+    const lesson = Array.isArray(lessonId) ? lessonId[0] : lessonId
+    const { data: LessonDetails, isLoading } = GetLessonDetails(lesson)
+    const { data: LessonQuestions, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading: isQuestionsLoading, refetch } = GetLessonQuestionsByType(lesson, profile?.id, tab, filters)
+
+    useEffect(() => {
+        refetch();
+    }, [tab, filters])
+
+    const QuestionData = LessonQuestions?.pages?.flatMap(page => page.questions) || [];
+
+    const handleFiltersChange = (selectedFilters: string[]) => {
+        setFilters(selectedFilters)
+    }
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">...loading...</div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="flex flex-col bg-primary/5 pb-3">
@@ -31,11 +64,11 @@ const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId:
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbLink href={`/course/${subject}`}>{subject}</BreadcrumbLink>
+                                <BreadcrumbLink href={`/course/${subject}`}>subject</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>{lesson}</BreadcrumbPage>
+                                <BreadcrumbPage>{LessonDetails.name}</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -56,71 +89,57 @@ const Page = async ({ params }: { params: Promise<{ subjectId: string, lessonId:
                     <div className="flex flex-row w-full gap-2 justify-between items-center mt-3">
                         <div className="flex flex-row gap-0.5 justify-center items-center">
                             <BookOpen className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">2 topics</div>
+                            <div className="text-sm md:text-base">{LessonDetails.subtopics.length} topics</div>
                         </div>
                         <div className="flex flex-row gap-0.5 justify-center items-center">
                             <Video className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">120 Minutes</div>
+                            <div className="text-sm md:text-base">{LessonDetails.time} Minutes</div>
                         </div>
-                        <div className="flex flex-row gap-0.5 justify-center items-center">
+                        <div className="flex flex-row gap-0.5 justify-center items-center" onClick={() => console.log(LessonQuestions)}>
                             <FileQuestion className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">99 Questions</div>
+                            <div className="text-sm md:text-base">{LessonDetails.total_questions} Questions</div>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col gap-2 w-xs lg:w-md">
-                    <div className="flex flex-row justify-between items-center border rounded-full my-5 md:my-0 py-1.5 pl-5 pr-1.5">
-                        <input
-                            type="text"
-                            placeholder="Search question"
-                            className="text-sm w-full font-bold text-foreground focus:outline-none focus:ring-0"
-                        />
-                        <Button variant={"ghost"} size={"icon"}>
-                            <Search className="stroke-2" />
-                        </Button>
-                    </div>
+                <div className="flex flex-col gap-3.5 w-xs lg:w-md">
+                    <SearchBar placeholder="Search Questions" filterOptions={LessonDetails.subtopics} onFilterChange={handleFiltersChange} selectedFilters={filters} />
                     <Tabs defaultValue="All" className="w-full">
                         <TabsList className="w-full">
                             <TabsTrigger value="All" className="font-bold">All</TabsTrigger>
                             <TabsTrigger value="Saved" className="font-bold">Saved</TabsTrigger>
                         </TabsList>
                         <TabsContent value="All">
-                            <div className="flex flex-col gap-2">
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle className="flex flex-row justify-between items-center">
-                                            <div>1/90</div>
-                                            <div className="text-sm font-semibold text-primary">#generalknowlege</div>
-                                        </CardTitle>
-                                        <CardDescription>Who was the first President of independent India, serving two terms from 1950 to 1962, and played a crucial role in shaping the Indian Constitution as its key contributor?
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent className="flex flex-col gap-1.5">
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">A</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr APJ Abdul Kalam</div>
+                            {
+                                isQuestionsLoading ?
+                                    <div>loading</div>
+                                    :
+                                    <>
+                                        <div className="flex flex-col gap-2">
+                                            {
+                                                QuestionData.map((question, index) => (
+                                                    <QuestionCard
+                                                        key={index}
+                                                        question={question}
+                                                        total={LessonDetails.total_questions}
+                                                    />
+                                                ))
+                                            }
                                         </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">B</div>
-                                            <div className="text-sm font-medium text-foreground/80">Dr B. R. Ambedkar</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">C</div>
-                                            <div className="text-sm font-medium text-foreground/80">Jawaharlal Nehru</div>
-                                        </div>
-                                        <div className="flex flex-row justify-start items-center gap-1.5 border rounded-md p-1.5">
-                                            <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">D</div>
-                                            <div className="text-sm font-medium text-foreground/80">Sardar Vallabhbhai Patel</div>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="flex justify-between items-center">
-                                        <div>
-                                            <Bookmark />
-                                        </div>
-                                        <Button className="text-foreground font-semibold">Check Answer</Button>
-                                    </CardFooter>
-                                </Card>
-                            </div>
+                                        {hasNextPage && (
+                                            <div className="flex justify-center my-4">
+                                                <Button
+                                                    variant={"outline"}
+                                                    className="text-xs"
+                                                    size={"sm"}
+                                                    onClick={() => fetchNextPage()}
+                                                    disabled={isFetchingNextPage}
+                                                >
+                                                    {isFetchingNextPage ? 'Loading...' : 'Show More'}
+                                                </Button>
+                                            </div>
+                                        )}
+                                    </>
+                            }
                         </TabsContent>
                         <TabsContent value="Saved" className="font-bold text-sm text-center">Coming Soon.</TabsContent>
                     </Tabs>

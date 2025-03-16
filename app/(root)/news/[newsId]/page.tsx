@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { Eye, Heart, Timer, Zap } from "lucide-react"
-import Image from "next/image"
 import { useParams } from "next/navigation"
 
 const Page = () => {
@@ -44,8 +43,10 @@ const Page = () => {
 
     if (isLoading) {
         return (
-            <div className="w-full h-screen justify-center items-center bg-primary/5  my-3 md:mt-24">
-                <span className="animate-spin rounded-full h-6 w-6 border-4 border-primary border-t-transparent"></span>
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">loading...</div>
+                </div>
             </div>
         )
     }
@@ -77,8 +78,8 @@ const Page = () => {
                     )
                 }
                 <div className="text-xl text-foreground font-bold">{data?.heading}</div>
-                <div className="w-full h-48 md:h-64 relative">
-                    <Image alt="newsimage" fill src={data?.image} className="rounded-md object-cover" priority />
+                <div className="w-full h-48 md:h-64">
+                    <img alt="newsimage" src={data?.image} className="rounded-md h-full w-full bject-cover" />
                 </div>
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-row items-center gap-2">
