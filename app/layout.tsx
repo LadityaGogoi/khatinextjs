@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manjari } from "next/font/google";
+import { Anek_Bangla, Manjari, Mina, Noto_Sans_Bengali, Noto_Serif_Bengali, Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
@@ -9,6 +9,12 @@ const manropeSans = Manjari({
   variable: "--font-manrope-sans",
   subsets: ["latin"],
   weight: ["100", "400", "700"]
+});
+
+const assameseSans = Mina({
+  variable: "--font-assamese-sans",
+  subsets: ["latin"],
+  weight: ["400"]
 });
 
 export const metadata: Metadata = {
@@ -24,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${manropeSans.variable} antialiased`}
+        className={`${manropeSans.variable} ${assameseSans.variable} antialiased`}
       >
         <QueryProvider>
           <ContextProgressProvider>

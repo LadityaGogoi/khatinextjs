@@ -56,7 +56,7 @@ const Page: React.FC = () => {
                 <Card>
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Login to your account</CardTitle>
-                        <CardDescription className="font-bold text-base">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
+                        <CardDescription className="font-semibold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
