@@ -47,7 +47,6 @@ const Page: React.FC = () => {
             console.log(result.status)
         }
 
-        setLoading(false);
         redirect('/')
     }
 
@@ -57,7 +56,7 @@ const Page: React.FC = () => {
                 <Card>
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Login to your account</CardTitle>
-                        <CardDescription>Enter your email below to login to your account</CardDescription>
+                        <CardDescription className="font-bold text-base">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
@@ -94,7 +93,7 @@ const Page: React.FC = () => {
                                 </div>
                             </div>
                             <CardFooter>
-                                <Button disabled={loading} type="submit" variant="default" className="w-full bg-primary">
+                                <Button disabled={loading} type="submit" variant="default" className="w-full bg-primary font-bold text-white">
                                     Continue
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12L10 18V6L16 12Z"></path></svg>
                                 </Button>

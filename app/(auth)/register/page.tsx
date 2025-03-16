@@ -51,7 +51,6 @@ const Page: React.FC = () => {
             console.log(result.status)
         }
 
-        setLoading(false)
         redirect('/')
     };
 
@@ -61,7 +60,7 @@ const Page: React.FC = () => {
                 <Card>
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Create your account</CardTitle>
-                        <CardDescription>Welcome! Please fill in the details to get started</CardDescription>
+                        <CardDescription className="font-bold text-base">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit}>

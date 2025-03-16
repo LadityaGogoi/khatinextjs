@@ -67,11 +67,12 @@ export async function SignIn(formData: SignInFormData) {
         }
     }
 
+
     return { status: "success", user: data?.user }
 }
 
 export async function GetUser() {
-    const supaabse = await createClient()
+    const supaabse = createClient()
 
     const {
         data: { user },
@@ -81,13 +82,10 @@ export async function GetUser() {
 }
 
 export async function SignOut() {
-    const supabase = await createClient()
+    const supabase = createClient()
 
     await supabase.auth.signOut()
 
     // Revalidate cache to ensure UI updates
-    // revalidatePath("/", 'layout')
-    console.log("hello")
-
     redirect('/login')
 }

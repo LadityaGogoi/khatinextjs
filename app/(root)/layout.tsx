@@ -83,7 +83,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         <NavigationMenu>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="font-semibold text-muted-foreground">Language</NavigationMenuTrigger>
+                                    <NavigationMenuTrigger className="font-medium text-muted-foreground">Language</NavigationMenuTrigger>
                                     <NavigationMenuContent>
 
                                         <ul className="grid w-xs gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
