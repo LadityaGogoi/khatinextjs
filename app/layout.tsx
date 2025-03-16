@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anek_Bangla, Manjari, Mina, Noto_Sans_Bengali, Noto_Serif_Bengali, Tiro_Bangla } from "next/font/google";
+import { Anek_Bangla, Hind_Siliguri, Manjari, Mina, Noto_Sans_Bengali, Noto_Serif_Bengali, Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
@@ -36,7 +36,7 @@ export default function RootLayout({
           <ContextProgressProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme="dark"
+              defaultTheme={"dark"}
               enableSystem
               disableTransitionOnChange
             >

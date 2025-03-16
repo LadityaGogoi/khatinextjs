@@ -61,11 +61,11 @@ const Page = () => {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/news">news</BreadcrumbLink>
+                            <BreadcrumbLink>news</BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href={`/news/${id}`}>{id}</BreadcrumbLink>
+                            <BreadcrumbLink>{data?.tag}</BreadcrumbLink>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
@@ -77,7 +77,7 @@ const Page = () => {
                         </div>
                     )
                 }
-                <div className="text-xl text-foreground font-bold">{data?.heading}</div>
+                <div className="text-xl text-foreground font-bold assamese-text">{data?.heading}</div>
                 <div className="w-full h-48 md:h-64">
                     <img alt="newsimage" src={data?.image} className="rounded-md h-full w-full bject-cover" />
                 </div>
@@ -114,7 +114,7 @@ const Page = () => {
                 <div className="mt-5 flex flex-col gap-2">
                     {
                         data?.description?.map((item: { text: string; type: string }, index: number) => (
-                            <div key={index} className="text-sm text-foreground">{item.text}</div>
+                            <div key={index} className="text-base font-medium assamese-text text-foreground">{item.text}</div>
                         ))
                     }
                 </div>

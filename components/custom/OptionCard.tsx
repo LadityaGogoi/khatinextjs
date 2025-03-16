@@ -31,7 +31,7 @@ const OptionCard: React.FC<OptionCardProps> = ({
                 </div>
             )}
             <div className="p-0.5 border rounded-md w-7 h-7 text-center font-bold">{id}</div>
-            <div className="text-sm font-medium text-foreground/80">{option}</div>
+            <div className="text-sm font-medium assamese-text text-foreground/80">{option}</div>
         </div>
     )
 }

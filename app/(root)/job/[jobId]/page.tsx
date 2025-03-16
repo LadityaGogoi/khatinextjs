@@ -48,11 +48,7 @@ const Page = () => {
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator />
                                 <BreadcrumbItem>
-                                    <BreadcrumbLink href="/course">course</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator />
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href={`/course/${jobId}`}>{jobId}</BreadcrumbLink>
+                                    <BreadcrumbLink>Job</BreadcrumbLink>
                                 </BreadcrumbItem>
                             </BreadcrumbList>
                         </Breadcrumb>
@@ -60,7 +56,7 @@ const Page = () => {
                     <div className="w-24 h-24 rounded-full">
                         <img alt="newsimage" src={data?.image} className="w-full h-full object-cover" />
                     </div>
-                    <div className="text-lg text-foreground font-bold">{data?.title}</div>
+                    <div className="text-base text-foreground">{data?.title}</div>
                     <div className="flex flex-row gap-2 justify-center items-center">
                         <Landmark className="stroke-muted-foreground" size={16} />
                         <div className="text-sm text-muted-foreground font-medium">{data?.organization}</div>

@@ -61,7 +61,7 @@ export default function Course() {
                                 </button>
                             </CardContent>
                         </Card>
-                        <div className="text-sm text-foreground">{data?.description}</div>
+                        <div className="text-base font-medium assamese-text text-muted-foreground">{data?.description}</div>
                     </CardContent>
                 </Card>
             </div>
@@ -73,19 +73,19 @@ export default function Course() {
                                 <Link key={index} href={`/course/${subject.id}`}>
                                     <Card className="w-xs lg:w-md p-0">
                                         <CardContent className="p-3 flex flex-col gap-2 justify-center items-center">
-                                            <div className="text-sm font-semibold">{subject.name}</div>
+                                            <div className="text-base font-semibold">{subject.name}</div>
                                             <div className="flex flex-row w-full justify-between items-center">
                                                 <div className="flex flex-row gap-0.5">
-                                                    <BookOpen size={16} />
-                                                    <div className="text-xs">{subject.total_lessons} lessons</div>
+                                                    <BookOpen className="stroke-muted-foreground" size={16} />
+                                                    <div className="text-xs text-muted-foreground">{subject.total_lessons} lessons</div>
                                                 </div>
                                                 <div className="flex flex-row gap-0.5">
-                                                    <FileQuestion size={16} />
-                                                    <div className="text-xs">{subject.total_questions}+ questions</div>
+                                                    <FileQuestion className="stroke-muted-foreground" size={16} />
+                                                    <div className="text-xs text-muted-foreground">{subject.total_questions}+ questions</div>
                                                 </div>
                                                 <div className="flex flex-row gap-0.5">
-                                                    <Lock size={16} />
-                                                    <div className="text-xs">{subject.isPremium ? "premium" : "free"}</div>
+                                                    <Lock className="stroke-muted-foreground" size={16} />
+                                                    <div className="text-xs text-muted-foreground">{subject.isPremium ? "premium" : "free"}</div>
                                                 </div>
                                             </div>
                                         </CardContent>

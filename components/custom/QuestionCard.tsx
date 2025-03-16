@@ -51,7 +51,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, total }) => {
                         }
                     </div>
                 </div>
-                <div className="text-foreground/80 text-sm">
+                <div className="text-foreground/80 text-base font-medium assamese-text">
                     {question.question_heading}
                 </div>
                 <div className="flex flex-col gap-1.5">

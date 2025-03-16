@@ -6,63 +6,12 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import {
     NavigationMenu,
-    NavigationMenuContent,
     NavigationMenuItem,
-    NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 import { Toggle } from "@/components/ui/toggle";
 import AuthProvider from "@/context/auth-provider";
-
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: "Assamese Language",
-        href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-        title: "English Langauge",
-        href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
-    {
-        title: "Hindi Language",
-        href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    }
-]
-
-const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-    return (
-        <li>
-            <NavigationMenuLink asChild>
-                <a
-                    ref={ref}
-                    className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                        className
-                    )}
-                    {...props}
-                >
-                    <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        {children}
-                    </p>
-                </a>
-            </NavigationMenuLink>
-        </li>
-    )
-})
-ListItem.displayName = "ListItem"
 
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -80,27 +29,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             <main className="w-full h-full mx-auto bg-background">
                 <div className="flex flex-col w-full">
                     <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[99] border-b md:border-dashed flex flex-row justify-between items-center bg-background/50">
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="font-medium text-muted-foreground">Language</NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-
-                                        <ul className="grid w-xs gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                            {components.map((component) => (
-                                                <ListItem
-                                                    key={component.title}
-                                                    title={component.title}
-                                                    href={component.href}
-                                                >
-                                                    {component.description}
-                                                </ListItem>
-                                            ))}
-                                        </ul>
-                                    </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                        <div className="assamese-text font-bold text-lg text-muted-foreground">খাতি</div>
                         <NavigationMenu className="hidden md:flex">
                             <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center">
                                 <NavigationMenuItem>
@@ -147,7 +76,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </NavigationMenu>
                         <div className="flex flex-row justify-center items-center gap-2">
                             <Link href="/pricing">
-                                <div className="text-sm text-muted-foreground hover:text-foreground">Upgrade</div>
+                                <div className="text-sm text-muted-foreground hover:text-foreground">Premium</div>
                             </Link>
                             <Toggle
                                 pressed={theme === "dark"}
