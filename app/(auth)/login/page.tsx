@@ -10,10 +10,17 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { redirect } from "next/navigation"
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 interface FormData {
     email: string;
@@ -22,11 +29,13 @@ interface FormData {
 
 
 const Page: React.FC = () => {
+    const router = useRouter()
     const [formData, setFormData] = useState<FormData>({
         email: "gogoiladitya@gmail.com",
         password: "12345678"
     })
-    const { mutate: signIn, error, isPending, isSuccess } = useSignIn();
+    const [showModal, setShowModal] = useState(false)
+    const { mutate: signIn, error, isError, isPending, isSuccess, data } = useSignIn();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({
@@ -35,16 +44,17 @@ const Page: React.FC = () => {
         }))
     }
 
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        signIn(formData)
-
+    useEffect(() => {
         if (isSuccess) {
-            redirect('/')
+            setShowModal(true)
         } else {
             console.log(error?.message)
         }
+    }, [isSuccess])
 
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        signIn(formData)
     }
 
     return (
@@ -55,7 +65,7 @@ const Page: React.FC = () => {
                         <CardTitle className="text-xl">Login to your account</CardTitle>
                         <CardDescription className="font-semibold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
                         {
-                            !isSuccess && (
+                            isError && (
                                 <CardDescription className="font-medium text-xs text-destructive">{error?.message}</CardDescription>
                             )
                         }
@@ -102,6 +112,15 @@ const Page: React.FC = () => {
                             </CardFooter>
                         </form>
                     </CardContent>
+                    <Dialog open={showModal}>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle className="text-center font-semibold text-lg">Congratulations</DialogTitle>
+                                <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
+                                <Button className="font-bold text-white" onClick={() => router.replace('/')}>Go to Home</Button>
+                            </DialogHeader>
+                        </DialogContent>
+                    </Dialog>
                 </Card>
             </div>
         </div>

@@ -16,7 +16,7 @@ const Page = () => {
                     <CardHeader className="text-center">
                         <CardTitle className="text-3xl text-chart-3 font-extrabold">Premium Plan</CardTitle>
                         <CardDescription className="text-sm font-bold assamese-text">নূন্যতম খৰচেৰে আপোনাৰ প্ৰস্তুতি আৰম্ভ কৰক</CardDescription>
-                        <CardTitle className="text-xl">	₹99 only</CardTitle>
+                        <CardTitle className="text-xl">	₹0 | free</CardTitle>
                         <CardContent className="flex flex-col gap-2">
                             <Button className="w-full text-foreground font-bold" size={"lg"}>Get Started</Button>
                             <div className="flex flex-col gap-1.5">

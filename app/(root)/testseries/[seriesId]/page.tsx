@@ -1,19 +1,34 @@
+'use client'
+
+import { GetTestPapers } from "@/api/test"
 import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
     BreadcrumbList,
-    BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Bookmark, FileQuestion, Quote, Timer } from "lucide-react"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 
 
-const Page = async ({ params }: { params: Promise<{ seriesId: string }> }) => {
-    const id = (await params).seriesId
+const Page = () => {
+    const { seriesId } = useParams()
+    const id = Array.isArray(seriesId) ? seriesId[0] : seriesId
+    const { data, isLoading } = GetTestPapers(id)
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-xs text-muted-foreground">loading...</div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="flex flex-col bg-primary/5">
@@ -27,44 +42,45 @@ const Page = async ({ params }: { params: Promise<{ seriesId: string }> }) => {
                         <BreadcrumbItem>
                             <BreadcrumbLink href="/testseries">testseries</BreadcrumbLink>
                         </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbPage>{id}</BreadcrumbPage>
-                        </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
-
-                <Link href="/testseries/69">
-                    <Card className="p-0 w-xs lg:w-md">
-                        <div className="flex flex-col gap-2 p-3 relative">
-                            <div className="flex flex-row justify-between items-center">
-                                <div>Paper I</div>
-                                <div>29/11/2001</div>
+                {
+                    data?.map((item, index) => (
+                        <Card key={index} className="p-0 w-xs lg:w-md">
+                            <div className="flex flex-col gap-2 p-3 relative">
+                                <div className="flex flex-row justify-between items-center">
+                                    <div>{item.name}</div>
+                                    <div>{item.date}</div>
+                                </div>
+                                <div className="flex flex-row w-full justify-between items-center">
+                                    <div className="flex flex-row gap-0.5 justify-center items-center">
+                                        <FileQuestion className="w-4 h-4 md:w-5 md:h-5" />
+                                        <div className="text-xs md:text-sm">{item.total_questions} Questions</div>
+                                    </div>
+                                    <div className="flex flex-row gap-0.5 justify-center items-center">
+                                        <Timer className="w-4 h-4 md:w-5 md:h-5" />
+                                        <div className="text-xs md:text-sm">{item.total_time} hour</div>
+                                    </div>
+                                    <div className="flex flex-row gap-0.5 justify-center items-center">
+                                        <Quote className="w-4 h-4 md:w-5 md:h-5" />
+                                        <div className="text-xs md:text-sm">{item.total_marks} marks</div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row justify-between items-center">
+                                    <Bookmark />
+                                    <div className="flex flex-row gap-2">
+                                        <Link href={`/test/${item.id}`}>
+                                            <Button variant={"outline"} className="font-semibold">View Papeer</Button>
+                                        </Link>
+                                        <Link href={`/test/${item.id}`}>
+                                            <Button className="text-foreground font-semibold">Start Test</Button>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-row w-full justify-between items-center">
-                                <div className="flex flex-row gap-0.5 justify-center items-center">
-                                    <FileQuestion className="w-4 h-4 md:w-5 md:h-5" />
-                                    <div className="text-xs md:text-sm">100 Questions</div>
-                                </div>
-                                <div className="flex flex-row gap-0.5 justify-center items-center">
-                                    <Timer className="w-4 h-4 md:w-5 md:h-5" />
-                                    <div className="text-xs md:text-sm">2 hour</div>
-                                </div>
-                                <div className="flex flex-row gap-0.5 justify-center items-center">
-                                    <Quote className="w-4 h-4 md:w-5 md:h-5" />
-                                    <div className="text-xs md:text-sm">100 marks</div>
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-between items-center">
-                                <Bookmark />
-                                <div className="flex flex-row gap-2">
-                                    <Button variant={"outline"} className="font-semibold">View Papeer</Button>
-                                    <Button className="text-foreground font-semibold">Start Test</Button>
-                                </div>
-                            </div>
-                        </div>
-                    </Card>
-                </Link>
+                        </Card>
+                    ))
+                }
             </div>
         </div>
     )
