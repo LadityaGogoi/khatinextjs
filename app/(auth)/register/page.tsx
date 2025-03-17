@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SignUp } from "@/api/user";
-import { redirect } from "next/navigation";
+import { useSignUp } from "@/api/user";
+import { redirect, useRouter } from "next/navigation";
 
 interface FormData {
     firstName: string;
@@ -24,12 +24,14 @@ interface FormData {
 
 const Page: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        firstName: "laditya",
-        lastName: "gogoi",
-        email: "gogoiladitya@gmail.com",
-        password: "1234567489"
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
     });
-    const [loading, setLoading] = useState(false)
+
+    const router = useRouter();
+    const { mutate: signUp, isPending, isSuccess, isError, error } = useSignUp();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({
@@ -40,19 +42,14 @@ const Page: React.FC = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setLoading(true)
-
-
-        const result = await SignUp(formData);
-
-        if (result.status === "success") {
-            console.log(result.user)
-        } else {
-            console.log(result.status)
-        }
-
-        redirect('/')
+        signUp(formData);
     };
+
+    useEffect(() => {
+        if (isSuccess) {
+            redirect('/')
+        }
+    }, [isSuccess, router]);
 
     return (
         <div className="flex-1 flex items-center justify-center p-4">
@@ -61,6 +58,11 @@ const Page: React.FC = () => {
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Create your account</CardTitle>
                         <CardDescription className="font-bold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
+                        {isError && (
+                            <CardDescription className="font-medium text-xs text-destructive">
+                                {error?.message}
+                            </CardDescription>
+                        )}
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
@@ -93,7 +95,7 @@ const Page: React.FC = () => {
                                 </div>
                             </div>
                             <CardFooter>
-                                <Button disabled={loading} type="submit" variant="default" className="w-full bg-primary text-foreground font-semibold">
+                                <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary text-foreground font-semibold">
                                     Continue
                                 </Button>
                             </CardFooter>

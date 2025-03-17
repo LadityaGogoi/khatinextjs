@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/client"
+import { useMutation } from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 
 interface SignUpFormData {
@@ -13,62 +14,57 @@ interface SignInFormData {
     password: string;
 }
 
-export async function SignUp(formData: SignUpFormData) {
-    const supabase = createClient()
+async function signUpApi(formData: SignUpFormData) {
+    const supabase = createClient();
 
     const credentials = {
-        username: formData.firstName as string,
-        email: formData.email as string,
-        password: formData.password as string
-    }
+        username: formData.firstName,
+        email: formData.email,
+        password: formData.password,
+    };
 
     const { error, data } = await supabase.auth.signUp({
         email: credentials.email,
         password: credentials.password,
         options: {
-            data: {
-                username: credentials.username
-            }
-        }
-    })
+            data: { username: credentials.username },
+        },
+    });
 
     if (error) {
-        return {
-            status: error?.message,
-            user: null
-        }
+        throw new Error(error.message);
     } else if (data?.user?.identities?.length === 0) {
-        return {
-            status: "User with this email already exists",
-            user: null,
-        }
+        throw new Error("User with this email already exists");
     }
 
-    return { status: "success", user: data.user }
+    return data.user;
 }
 
-export async function SignIn(formData: SignInFormData) {
-    const supabase = createClient()
+export function useSignUp() {
+    return useMutation({
+        mutationFn: signUpApi,
+    });
+}
 
-    const credentials = {
-        email: formData.email as string,
-        password: formData.password as string
-    }
+export async function signInApi(formData: SignInFormData) {
+    const supabase = createClient();
 
     const { error, data } = await supabase.auth.signInWithPassword({
-        email: credentials.email,
-        password: credentials.password
-    })
+        email: formData.email,
+        password: formData.password,
+    });
 
     if (error) {
-        return {
-            status: error?.message,
-            user: null
-        }
+        throw new Error(error.message);
     }
 
+    return data?.user;
+}
 
-    return { status: "success", user: data?.user }
+export function useSignIn() {
+    return useMutation({
+        mutationFn: signInApi,
+    });
 }
 
 export async function GetUser() {

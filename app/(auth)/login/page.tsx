@@ -1,6 +1,6 @@
 'use client'
 
-import { SignIn } from "@/api/user"
+import { useSignIn } from "@/api/user"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -26,7 +26,7 @@ const Page: React.FC = () => {
         email: "gogoiladitya@gmail.com",
         password: "12345678"
     })
-    const [loading, setLoading] = useState(false)
+    const { mutate: signIn, error, isPending, isSuccess } = useSignIn();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({
@@ -37,17 +37,14 @@ const Page: React.FC = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        signIn(formData)
 
-        const result = await SignIn(formData)
-
-        if (result.status === "success") {
-            console.log(result.user)
+        if (isSuccess) {
+            redirect('/')
         } else {
-            console.log(result.status)
+            console.log(error?.message)
         }
 
-        redirect('/')
     }
 
     return (
@@ -57,6 +54,11 @@ const Page: React.FC = () => {
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Login to your account</CardTitle>
                         <CardDescription className="font-semibold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
+                        {
+                            !isSuccess && (
+                                <CardDescription className="font-medium text-xs text-destructive">{error?.message}</CardDescription>
+                            )
+                        }
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
@@ -93,7 +95,7 @@ const Page: React.FC = () => {
                                 </div>
                             </div>
                             <CardFooter>
-                                <Button disabled={loading} type="submit" variant="default" className="w-full bg-primary font-bold text-white">
+                                <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary font-bold text-white">
                                     Continue
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12L10 18V6L16 12Z"></path></svg>
                                 </Button>
