@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSignUp } from "@/api/user";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 interface FormData {
     firstName: string;
@@ -37,8 +37,6 @@ const Page: React.FC = () => {
         password: ""
     });
     const [showModal, setShowModal] = useState(false)
-
-    const router = useRouter();
     const { mutate: signUp, isPending, isSuccess, isError, error } = useSignUp();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -116,7 +114,7 @@ const Page: React.FC = () => {
                             <DialogHeader>
                                 <DialogTitle className="text-center font-semibold text-lg">Congratulations</DialogTitle>
                                 <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে সাইন আপ কৰিছে।</DialogDescription>
-                                <Button className="font-bold text-white" onClick={() => router.replace('/')}>Go to Home</Button>
+                                <Button className="font-bold text-white" onClick={() => redirect('/')}>Go to Home</Button>
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
