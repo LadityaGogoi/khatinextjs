@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { redirect } from "next/navigation"
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 interface FormData {
@@ -34,7 +33,7 @@ const Page: React.FC = () => {
         password: "12345678"
     })
     const [showModal, setShowModal] = useState(false)
-    const { mutate: signIn, error, isError, isPending, isSuccess, data } = useSignIn();
+    const { mutate: signIn, error, isError, isPending, isSuccess } = useSignIn();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({
@@ -116,7 +115,7 @@ const Page: React.FC = () => {
                             <DialogHeader>
                                 <DialogTitle className="text-center font-semibold text-lg">Congratulations</DialogTitle>
                                 <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
-                                <Button className="font-bold text-white" onClick={() => redirect('/')}>Go to Home</Button>
+                                <Button className="font-bold text-white" onClick={() => window.location.reload()}>Go to Home</Button>
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
