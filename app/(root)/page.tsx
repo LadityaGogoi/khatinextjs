@@ -86,18 +86,18 @@ export default function Home() {
             <div className="flex flex-col md:pt-32 w-full pb-4 bg-primary/5">
                 <div className="w-full py-6 pb-10 text-center flex-col gap-6 flex">
                     <h1 className="hidden md:block">
-                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-extrabold tracking-tighter md:text-center text-5xl md:text-5xl">
+                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-bold tracking-tighter md:text-center text-5xl md:text-5xl">
                             ALL In One App
                             <br />
                             For Assamese Students
                         </span>
                     </h1>
-                    <p className="max-w-2xl text-center assamese-text text-muted-foreground text-sm lg:text-base font-semibold mx-auto px-4 sm:px-0">
+                    <p className="max-w-2xl text-center assamese-text text-muted-foreground text-lg md:text-xl font-medium mx-auto px-4 sm:px-0">
                         জটিল বিষয়সমূহ সৰল কৰা ➜ অধ্যয়ন টোকা সৃষ্টি কৰা ➜ প্ৰশ্নকাকত সৃষ্টি কৰা ➜ পিডিএফ অনুবাদ কৰিবলৈ সৰল কৰা ➜ কুইজ আৰু ফ্লেছকাৰ্ড সৃষ্টি কৰা
                     </p>
                     <div className="w-xs mx-auto">
                         <a href="#">
-                            <Button variant="default" size="lg" className="w-full bg-primary text-sm font-semibold">
+                            <Button variant="default" size="lg" className="w-full bg-primary text-sm font-medium text-white">
                                 Download Khati App
                                 <FolderDown className="stroke-3" />
                             </Button>
@@ -148,25 +148,25 @@ export default function Home() {
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
                                 <Briefcase className="stroke-primary" />
                             </div>
-                            <span className="text-sm font-semibold text-muted-foreground"># Updated Jobs Notification</span>
+                            <span className="text-sm font-medium text-muted-foreground"># Updated Jobs Notification</span>
                         </div>
                         <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50">
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
                                 <FileQuestion className="stroke-primary" />
                             </div>
-                            <span className="text-sm font-semibold text-muted-foreground"># Mock Test Series | Live Weekly Test</span>
+                            <span className="text-sm font-medium text-muted-foreground"># Mock Test Series | Live Weekly Test</span>
                         </div>
                         <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50">
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
                                 <Rss className="stroke-primary" />
                             </div>
-                            <span className="text-sm font-semibold text-muted-foreground"># Mock Test Series | Live Weekly Test</span>
+                            <span className="text-sm font-medium text-muted-foreground"># Mock Test Series | Live Weekly Test</span>
                         </div>
                         <div className="flex flex-row gap-2 justify-start items-center w-xs mx-auto p-1.5 rounded-md bg-secondary/50">
                             <div className="p-1 rounded-md justify-center items-center bg-secondary">
                                 <BookOpen className="stroke-primary" />
                             </div>
-                            <span className="text-sm font-semibold text-muted-foreground"># Full Syllabus | 50,000+ questions</span>
+                            <span className="text-sm font-medium text-muted-foreground"># Full Syllabus | 50,000+ questions</span>
                         </div>
                     </div>
                 </div>

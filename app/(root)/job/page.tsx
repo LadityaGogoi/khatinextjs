@@ -70,15 +70,15 @@ const Page = () => {
                                     {
                                         jobs.map((item, index) => (
                                             <Link key={index} href={`/job/${item.id}`}>
-                                                <Card className="w-xs p-0">
+                                                <Card className="w-xs p-0 rounded-md shadow-none">
                                                     <CardContent className="flex flex-col gap-2 p-3">
                                                         <div className="flex flex-row justify-between items-center">
                                                             <div className="flex flex-row gap-2">
-                                                                <div className="p-1.5 bg-primary/10 rounded-full">
-                                                                    <img src={item?.image} alt="logo" className="w-7 h-7" />
+                                                                <div className="p-1.5 bg-primary/10 rounded-full w-9 h-9">
+                                                                    <img src={item?.image} alt="logo" className="w-full h-full object-cover" />
                                                                 </div>
                                                                 <div className="flex flex-col justify-between items-start">
-                                                                    <div className="font-semibold text-base text-foreground">{item.title}</div>
+                                                                    <div className="font-semibold text-base text-muted-foreground capitalize">{item.title}</div>
                                                                     <div className="flex flex-row justify-center items-center">
                                                                         <Landmark className="stroke-muted-foreground" size={16} />
                                                                         <div className="text-xs font-medium text-muted-foreground">{item.organization}</div>

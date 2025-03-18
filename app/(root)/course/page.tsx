@@ -49,15 +49,15 @@ export default function Course() {
                                         <img src={data?.image} alt="logo" className="w-9 h-9" />
                                     </div>
                                     <div className="flex flex-col justify-between items-start">
-                                        <div className="font-semibold text-base">{data?.name}</div>
+                                        <div className="font-semibold text-base text-muted-foreground">{data?.name}</div>
                                         <div className="flex flex-row">
-                                            <Landmark size={16} />
-                                            <div className="text-xs">{data?.organization}</div>
+                                            <Landmark size={16} className="stroke-muted-foreground" />
+                                            <div className="text-xs text-muted-foreground">{data?.organization}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <button onClick={() => console.log(data)}>
-                                    <Heart size={24} className="stroke-secondary-foreground" />
+                                    <Heart size={24} className="stroke-muted-foreground" />
                                 </button>
                             </CardContent>
                         </Card>
@@ -73,7 +73,7 @@ export default function Course() {
                                 <Link key={index} href={`/course/${subject.id}`}>
                                     <Card className="w-xs lg:w-md p-0">
                                         <CardContent className="p-3 flex flex-col gap-2 justify-center items-center">
-                                            <div className="text-base font-semibold">{subject.name}</div>
+                                            <div className="text-base font-semibold text-muted-foreground">{subject.name}</div>
                                             <div className="flex flex-row w-full justify-between items-center">
                                                 <div className="flex flex-row gap-0.5">
                                                     <BookOpen className="stroke-muted-foreground" size={16} />
@@ -104,8 +104,8 @@ export default function Course() {
                                     <Card className="w-xs p-0 m-0 relative">
                                         <CardContent className="p-3">
                                             <div className="flex flex-col gap-2 justify-center items-center">
-                                                <div className="text-sm font-semibold text-foreground">{notice.heading}</div>
-                                                <div className="text-xs line-clamp-2">{notice.description}</div>
+                                                <div className="text-sm font-semibold text-muted-foreground">{notice.heading}</div>
+                                                <div className="text-xs line-clamp-2 text-muted-foreground">{notice.description}</div>
                                             </div>
                                             <div className="absolute top-0 right-0 rounded-bl-full bg-destructive text-xs">
                                                 New

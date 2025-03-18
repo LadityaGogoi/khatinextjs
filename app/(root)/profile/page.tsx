@@ -13,7 +13,7 @@ const Page = () => {
                         <div className="rounded-full p-1.5 bg-primary/10">
                             <User className="stroke-muted-foreground" />
                         </div>
-                        <div className="font-bold text-sm text-muted-foreground">Profile</div>
+                        <div className="font-medium text-base text-muted-foreground">Profile</div>
                     </div>
                     <div>
                         <ArrowRight className="stroke-muted-foreground" />
@@ -24,7 +24,7 @@ const Page = () => {
                         <div className="rounded-full p-1.5 bg-primary/10">
                             <Bookmark className="stroke-muted-foreground" />
                         </div>
-                        <div className="font-bold text-sm text-muted-foreground">Saved</div>
+                        <div className="font-medium text-base text-muted-foreground">Saved</div>
                     </div>
                     <div>
                         <ArrowRight className="stroke-muted-foreground" />
@@ -35,7 +35,7 @@ const Page = () => {
                         <div className="rounded-full p-1.5 bg-primary/10">
                             <Settings className="stroke-muted-foreground" />
                         </div>
-                        <div className="font-bold text-sm text-muted-foreground">Settings</div>
+                        <div className="font-medium text-base text-muted-foreground">Settings</div>
                     </div>
                     <div>
                         <ArrowRight className="stroke-muted-foreground" />
@@ -46,7 +46,7 @@ const Page = () => {
                         <div className="rounded-full p-1.5 bg-primary/10">
                             <Mail className="stroke-muted-foreground" />
                         </div>
-                        <div className="font-bold text-sm text-muted-foreground">Contact Us</div>
+                        <div className="font-medium text-base text-muted-foreground">Contact Us</div>
                     </div>
                     <div>
                         <ArrowRight className="stroke-muted-foreground" />
@@ -57,14 +57,14 @@ const Page = () => {
                         <div className="rounded-full p-1.5 bg-primary/10">
                             <FileQuestion className="stroke-muted-foreground" />
                         </div>
-                        <div className="font-bold text-sm text-muted-foreground">Help Center</div>
+                        <div className="font-medium text-base text-muted-foreground">Help Center</div>
                     </div>
                     <div>
                         <ArrowRight className="stroke-muted-foreground" />
                     </div>
                 </div>
                 <div onClick={() => SignOut()}>
-                    <Button variant={"destructive"}>Log Out</Button>
+                    <Button variant={"destructive"} className="font-semibold" size={"sm"}>Log Out</Button>
                 </div>
             </div>
         </div>

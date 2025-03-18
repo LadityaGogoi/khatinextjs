@@ -29,14 +29,14 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             <main className="w-full h-full mx-auto bg-background">
                 <div className="flex flex-col w-full">
                     <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[99] border-b md:border-dashed flex flex-row justify-between items-center bg-background/50">
-                        <div className="assamese-text font-bold text-lg text-muted-foreground md:w-28">খাতি</div>
+                        <div className="assamese-text font-bold text-lg text-primary md:w-28">খাতি</div>
                         <NavigationMenu className="hidden md:flex">
                             <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center">
                                 <NavigationMenuItem>
                                     <Link href="/">
                                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                             <House className="stroke-muted-foreground stroke-2" />
-                                            <div className="text-xs font-semibold text-muted-foreground">Home</div>
+                                            <div className="text-xs font-medium text-muted-foreground">Home</div>
                                         </Button>
                                     </Link>
                                 </NavigationMenuItem>
@@ -44,7 +44,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                     <Link href="/job">
                                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                             <Briefcase className="stroke-muted-foreground stroke-2" />
-                                            <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
+                                            <div className="text-xs font-medium text-muted-foreground">Job Board</div>
                                         </Button>
                                     </Link>
                                 </NavigationMenuItem>
@@ -52,7 +52,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                     <Link href="/course">
                                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                             <Tv className="stroke-muted-foreground stroke-2" />
-                                            <div className="text-xs font-semibold text-muted-foreground">Course</div>
+                                            <div className="text-xs font-medium text-muted-foreground">Course</div>
                                         </Button>
                                     </Link>
                                 </NavigationMenuItem>
@@ -60,7 +60,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                     <Link href="/testseries">
                                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                             <BookOpen className="stroke-muted-foreground stroke-2" />
-                                            <div className="text-xs font-semibold text-muted-foreground">Test Series</div>
+                                            <div className="text-xs font-medium text-muted-foreground">Test Series</div>
                                         </Button>
                                     </Link>
                                 </NavigationMenuItem>
@@ -68,7 +68,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                     <Link href="/profile">
                                         <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                             <User className="stroke-muted-foreground stroke-2" />
-                                            <div className="text-xs font-semibold text-muted-foreground">Profile</div>
+                                            <div className="text-xs font-medium text-muted-foreground">Profile</div>
                                         </Button>
                                     </Link>
                                 </NavigationMenuItem>
@@ -91,31 +91,31 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                             <Link href="/">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                     <House className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Home</div>
+                                    <div className="text-xs font-medium text-muted-foreground">Home</div>
                                 </Button>
                             </Link>
                             <Link href="/job">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                     <Briefcase className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Job Board</div>
+                                    <div className="text-xs font-medium text-muted-foreground">Job Board</div>
                                 </Button>
                             </Link>
                             <Link href="/course">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                     <Tv className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Course</div>
+                                    <div className="text-xs font-medium text-muted-foreground">Course</div>
                                 </Button>
                             </Link>
                             <Link href="/testseries">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                     <BookOpen className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Test Series</div>
+                                    <div className="text-xs font-medium text-muted-foreground">Test Series</div>
                                 </Button>
                             </Link>
                             <Link href="/profile">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
                                     <User className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-semibold text-muted-foreground">Profile</div>
+                                    <div className="text-xs font-medium text-muted-foreground">Profile</div>
                                 </Button>
                             </Link>
                         </div>

@@ -39,19 +39,19 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, total }) => {
         <Card className="p-0">
             <CardContent className="p-3 space-y-2">
                 <div className="flex flex-row justify-between items-center">
-                    <div>{question.index}/{total}</div>
+                    <div className="text-sm text-muted-foreground">{question.index}/{total}</div>
                     <div className="flex flex-row flex-wrap">
                         {
                             question.tags.map((tag: string, index: number) => (
                                 <div
-                                    className="text-xs font-semibold text-primary"
+                                    className="text-xs text-primary"
                                     key={index}
                                 >#{tag}</div>
                             ))
                         }
                     </div>
                 </div>
-                <div className="text-foreground/80 text-base font-medium assamese-text">
+                <div className="text-base font-medium assamese-text text-muted-foreground">
                     {question.question_heading}
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -71,9 +71,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, total }) => {
                 </div>
                 <div className="flex justify-between items-center">
                     <div>
-                        <Bookmark />
+                        <Bookmark className="stroke-muted-foreground" />
                     </div>
-                    <Button className="text-foreground font-semibold" disabled={showCorrect} onClick={checkAnswer}>Check Answer</Button>
+                    <Button size={'sm'} className="font-medium text-white" disabled={showCorrect} onClick={checkAnswer}>Check Answer</Button>
                 </div>
             </CardContent>
         </Card>

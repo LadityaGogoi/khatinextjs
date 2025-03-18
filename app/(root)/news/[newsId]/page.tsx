@@ -77,7 +77,7 @@ const Page = () => {
                         </div>
                     )
                 }
-                <div className="text-xl text-foreground font-bold assamese-text">{data?.heading}</div>
+                <div className="text-xl font-bold text-muted-foreground assamese-text">{data?.heading}</div>
                 <div className="w-full h-48 md:h-64">
                     <img alt="newsimage" src={data?.image} className="rounded-md h-full w-full bject-cover" />
                 </div>
@@ -86,13 +86,13 @@ const Page = () => {
                         <div className="p-1.5 bg-primary/20 rounded-full">
                             <img src={data?.creator_image} alt="logo" className="w-7 h-7" />
                         </div>
-                        <div className="text-base text-foreground font-bold">{data?.creator_name}</div>
+                        <div className="text-base font-bold text-muted-foreground">{data?.creator_name}</div>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <button>
-                            <Heart size={24} className="stroke-secondary-foreground" />
+                            <Heart size={24} className="stroke-muted-foreground" />
                         </button>
-                        <div className="text-sm">0</div>
+                        <div className="text-sm text-muted-foreground">0</div>
                     </div>
                 </div>
                 <Separator />
@@ -114,7 +114,7 @@ const Page = () => {
                 <div className="mt-5 flex flex-col gap-2">
                     {
                         data?.description?.map((item: { text: string; type: string }, index: number) => (
-                            <div key={index} className="text-base font-medium assamese-text text-foreground">{item.text}</div>
+                            <div key={index} className="text-base font-medium assamese-text text-muted-foreground">{item.text}</div>
                         ))
                     }
                 </div>

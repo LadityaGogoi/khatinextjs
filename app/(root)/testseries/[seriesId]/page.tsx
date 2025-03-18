@@ -49,31 +49,31 @@ const Page = () => {
                         <Card key={index} className="p-0 w-xs lg:w-md">
                             <div className="flex flex-col gap-2 p-3 relative">
                                 <div className="flex flex-row justify-between items-center">
-                                    <div>{item.name}</div>
-                                    <div>{item.date}</div>
+                                    <div className="text-muted-foreground text-base font-medium">{item.name}</div>
+                                    <div className="text-muted-foreground text-base font-medium">{item.date}</div>
                                 </div>
                                 <div className="flex flex-row w-full justify-between items-center">
                                     <div className="flex flex-row gap-0.5 justify-center items-center">
-                                        <FileQuestion className="w-4 h-4 md:w-5 md:h-5" />
-                                        <div className="text-xs md:text-sm">{item.total_questions} Questions</div>
+                                        <FileQuestion size={16} className="stroke-muted-foreground" />
+                                        <div className="text-xs md:text-sm text-muted-foreground">{item.total_questions} Questions</div>
                                     </div>
                                     <div className="flex flex-row gap-0.5 justify-center items-center">
-                                        <Timer className="w-4 h-4 md:w-5 md:h-5" />
-                                        <div className="text-xs md:text-sm">{item.total_time} hour</div>
+                                        <Timer size={16} className="stroke-muted-foreground" />
+                                        <div className="text-xs md:text-sm text-muted-foreground">{item.total_time} hour</div>
                                     </div>
                                     <div className="flex flex-row gap-0.5 justify-center items-center">
-                                        <Quote className="w-4 h-4 md:w-5 md:h-5" />
-                                        <div className="text-xs md:text-sm">{item.total_marks} marks</div>
+                                        <Quote size={16} className="stroke-muted-foreground" />
+                                        <div className="text-xs md:text-sm text-muted-foreground">{item.total_marks} marks</div>
                                     </div>
                                 </div>
                                 <div className="flex flex-row justify-between items-center">
-                                    <Bookmark />
+                                    <Bookmark size={24} className="stroke-muted-foreground" />
                                     <div className="flex flex-row gap-2">
                                         <Link href={`/test/${item.id}`}>
-                                            <Button variant={"outline"} className="font-semibold">View Papeer</Button>
+                                            <Button variant={"outline"} className="font-medium text-muted-foreground" size={"sm"}>View Papeer</Button>
                                         </Link>
                                         <Link href={`/test/${item.id}`}>
-                                            <Button className="text-foreground font-semibold">Start Test</Button>
+                                            <Button className="font-medium text-white" size={"sm"}>Start Test</Button>
                                         </Link>
                                     </div>
                                 </div>

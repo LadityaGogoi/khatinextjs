@@ -64,7 +64,7 @@ const Page: React.FC = () => {
                 <Card>
                     <CardHeader className="text-center">
                         <CardTitle className="text-xl">Create your account</CardTitle>
-                        <CardDescription className="font-bold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
+                        <CardDescription className="font-semibold text-base assamese-text">অনুগ্ৰহ কৰি আপোনাৰ তথ্য তলত পূৰণ কৰক</CardDescription>
                         {isError && (
                             <CardDescription className="font-medium text-xs text-destructive">
                                 {error?.message}

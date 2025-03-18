@@ -42,13 +42,13 @@ const SearchBar: React.FC<FilterProps> = ({
     }
 
     return (
-        <Card className="p-0 w-xs rounded-full lg:w-md md:my-0">
-            <CardContent className="flex flex-row justify-between items-center py-1 pl-5 pr-1">
-                <input
+        <Card className="p-0 rounded-full lg:w-md md:my-0 shadow-none">
+            <CardContent className="flex flex-row justify-between items-center p-0.5">
+                {/* <input
                     type="text"
                     placeholder={placeholder}
-                    className="text-sm w-full font-medium text-foreground focus:outline-none focus:ring-0"
-                />
+                    className="text-base font-semibold w-full text-foreground focus:outline-none focus:ring-0"
+                /> */}
                 <Dialog>
                     <DialogTrigger>
                         <div className="rounded-full p-3 bg-primary/10">

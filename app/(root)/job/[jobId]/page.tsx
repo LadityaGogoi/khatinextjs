@@ -56,7 +56,7 @@ const Page = () => {
                     <div className="w-24 h-24 rounded-full">
                         <img alt="newsimage" src={data?.image} className="w-full h-full object-cover" />
                     </div>
-                    <div className="text-base text-foreground">{data?.title}</div>
+                    <div className="text-base font-semibold text-muted-foreground">{data?.title}</div>
                     <div className="flex flex-row gap-2 justify-center items-center">
                         <Landmark className="stroke-muted-foreground" size={16} />
                         <div className="text-sm text-muted-foreground font-medium">{data?.organization}</div>
@@ -66,14 +66,14 @@ const Page = () => {
                         <div className="text-sm text-muted-foreground font-medium">{data?.location}</div>
                     </div>
                     <div className="w-full flex flex-row justify-center items-center gap-2 mt-2">
-                        <div className="w-2/5 py-3 px-1.5 bg-secondary border rounded-md flex flex-col gap-1.5 justify-center items-center">
+                        <div className="w-2/5 py-3 px-1.5 bg-primary/5 border rounded-md flex flex-col gap-1.5 justify-center items-center">
                             <div className="bg-primary/10 rounded-full p-3">
                                 <IndianRupee className="w-4 h-4" />
                             </div>
                             <div className="text-xs text-muted-foreground font-semibold">Expected Salary</div>
                             <div className="text-xs text-primary font-medium">{data?.expected_salary}</div>
                         </div>
-                        <div className="w-2/5 py-3 px-1.5 bg-secondary border rounded-md flex flex-col gap-1.5 justify-center items-center">
+                        <div className="w-2/5 py-3 px-1.5 bg-primary/5 border rounded-md flex flex-col gap-1.5 justify-center items-center">
                             <div className="bg-primary/10 rounded-full p-3">
                                 <Quote className="w-4 h-4" />
                             </div>
@@ -97,15 +97,15 @@ const Page = () => {
                             {
                                 data?.important_dates.map((item: any, index: number) => (
                                     <TableRow key={index}>
-                                        <TableCell className="font-medium">{item.type}</TableCell>
-                                        <TableCell className="text-center">{item.date}</TableCell>
+                                        <TableCell className="font-medium text-muted-foreground">{item.type}</TableCell>
+                                        <TableCell className="text-center  text-muted-foreground">{item.date}</TableCell>
                                     </TableRow>
                                 ))
                             }
                         </TableBody>
                     </Table>
                     <div className="relative w-xs lg:w-md flex flex-col gap-2">
-                        <div className="text-center font-bold text-foreground text-base">Detail Explanation</div>
+                        <div className="text-center font-bold text-muted-foreground text-base">Detail Explanation</div>
                         <HeroVideoDialog
                             className="block dark:hidden"
                             animationStyle="top-in-bottom-out"

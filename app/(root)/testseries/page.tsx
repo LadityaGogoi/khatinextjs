@@ -35,29 +35,29 @@ const TestSeries = () => {
                                                 <img src={item?.image} alt="logo" className="w-7 h-7" />
                                             </div>
                                             <div className="flex flex-col justify-between items-start">
-                                                <div className="font-semibold text-base">{item.name}</div>
+                                                <div className="font-semibold text-base text-muted-foreground">{item.name}</div>
                                                 <div className="flex flex-row">
-                                                    <Landmark size={16} />
-                                                    <div className="text-xs">{item.organization}</div>
+                                                    <Landmark className="stroke-muted-foreground" size={16} />
+                                                    <div className="text-xs text-muted-foreground">{item.organization}</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="flex flex-col justify-center items-center">
                                             <button>
-                                                <Heart size={24} className="stroke-secondary-foreground" />
+                                                <Heart size={24} className="stroke-muted-foreground" />
                                             </button>
-                                            <div className="text-sm">0</div>
+                                            <div className="text-sm text-muted-foreground">0</div>
                                         </div>
                                     </div>
                                     <Progress value={0} />
                                     <div className="flex flex-row w-full justify-between items-center">
                                         <div className="flex flex-row gap-0.5 justify-center items-center">
-                                            <BookOpen className="w-4 h-4 md:w-5 md:h-5" />
-                                            <div className="text-xs md:text-sm">{item.total_tests} tests</div>
+                                            <BookOpen size={16} className="text-muted-foreground" />
+                                            <div className="text-xs md:text-sm text-muted-foreground">{item.total_tests} tests</div>
                                         </div>
                                         <div className="flex flex-row gap-0.5 justify-center items-center">
-                                            <FileQuestion className="w-4 h-4 md:w-5 md:h-5" />
-                                            <div className="text-xs md:text-sm">0% done</div>
+                                            <FileQuestion size={16} className="text-muted-foreground" />
+                                            <div className="text-xs md:text-sm text-muted-foreground">0% done</div>
                                         </div>
                                         <div className="flex flex-row gap-0.5 justify-center items-center">
                                             <Lock className="stroke-muted-foreground" size={16} />
@@ -66,7 +66,7 @@ const TestSeries = () => {
                                     </div>
                                     {
                                         item.isTrending && (
-                                            <div className="absolute top-0 right-0 rounded-bl-full bg-destructive text-xs">
+                                            <div className="absolute top-0 right-0 rounded-bl-full bg-destructive text-xs text-white">
                                                 Trending
                                             </div>
                                         )

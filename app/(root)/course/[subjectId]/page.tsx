@@ -47,7 +47,7 @@ const Page = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>subject</BreadcrumbPage>
+                                <BreadcrumbPage className="text-muted-foreground">subject</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -61,19 +61,19 @@ const Page = () => {
                                         <img src={lesson.image} alt="logo" className="w-9 h-9" />
                                     </div>
                                     <div className="flex-1 flex-col items-start">
-                                        <div className="font-semibold text-base">{lesson.name}</div>
+                                        <div className="font-semibold text-base text-muted-foreground">{lesson.name}</div>
                                         <div className="flex flex-row w-full justify-between items-center">
                                             <div className="flex flex-row gap-0.5">
-                                                <BookOpen size={16} />
-                                                <div className="text-xs">{lesson.totalSubtopics} Sub Topics</div>
+                                                <BookOpen size={16} className="text-muted-foreground" />
+                                                <div className="text-xs text-muted-foreground">{lesson.totalSubtopics} Sub Topics</div>
                                             </div>
                                             <div className="flex flex-row gap-0.5">
-                                                <Timer size={16} />
-                                                <div className="text-xs">{lesson.timeRequired}</div>
+                                                <Timer size={16} className="text-muted-foreground" />
+                                                <div className="text-xs text-muted-foreground">{lesson.timeRequired}</div>
                                             </div>
                                             <div className="flex flex-row gap-0.5">
-                                                <FileQuestion size={16} />
-                                                <div className="text-xs">{lesson.progress}% done</div>
+                                                <FileQuestion size={16} className="text-muted-foreground" />
+                                                <div className="text-xs text-muted-foreground">{lesson.progress}% done</div>
                                             </div>
                                         </div>
                                         <div className="flex-1 h-1.5 bg-primary/30 rounded-full">

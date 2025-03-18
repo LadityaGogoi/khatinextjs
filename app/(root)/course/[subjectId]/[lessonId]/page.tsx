@@ -68,7 +68,7 @@ const Page = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>{LessonDetails.name}</BreadcrumbPage>
+                                <BreadcrumbPage className="text-muted-foreground">{LessonDetails.name}</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -88,16 +88,16 @@ const Page = () => {
                     />
                     <div className="flex flex-row w-full gap-2 justify-between items-center mt-3">
                         <div className="flex flex-row gap-0.5 justify-center items-center">
-                            <BookOpen className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">{LessonDetails.subtopics.length} topics</div>
+                            <BookOpen size={16} className="stroke-muted-foreground" />
+                            <div className="text-sm md:text-base text-muted-foreground">{LessonDetails.subtopics.length} topics</div>
                         </div>
                         <div className="flex flex-row gap-0.5 justify-center items-center">
-                            <Video className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">{LessonDetails.time} Minutes</div>
+                            <Video className="stroke-muted-foreground" size={16} />
+                            <div className="text-sm md:text-base text-muted-foreground">{LessonDetails.time} Minutes</div>
                         </div>
                         <div className="flex flex-row gap-0.5 justify-center items-center" onClick={() => console.log(LessonQuestions)}>
-                            <FileQuestion className="w-5 h-5 md:w-6 md:h-6" />
-                            <div className="text-sm md:text-base">{LessonDetails.total_questions} Questions</div>
+                            <FileQuestion size={16} className="stroke-muted-foreground" />
+                            <div className="text-sm md:text-base text-muted-foreground">{LessonDetails.total_questions} Questions</div>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ const Page = () => {
                                     </>
                             }
                         </TabsContent>
-                        <TabsContent value="Saved" className="font-bold text-sm text-center">Coming Soon.</TabsContent>
+                        <TabsContent value="Saved" className="font-medium text-sm text-center text-muted-foreground">Coming Soon.</TabsContent>
                     </Tabs>
                 </div>
             </div>
