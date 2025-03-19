@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { GetAllNews } from "@/api/news";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useAuth } from "@/context/auth-provider"
+import { images } from "@/constants";
 
 const NewsCategoriesData = [
     { id: 0, name: "Trending" },
@@ -108,20 +109,17 @@ export default function Home() {
                     <Carousel className="max-w-11/12 mx-auto md:max-w-sm xl:max-w-5xl relative">
                         <CarouselContent className="-ml-4">
                             <CarouselItem className="basis-xs h-48 pl-4">
-                                <Card className="h-full w-full">
-                                </Card>
+                                <img src={images.Carousel1.src} alt="carousel img" className="w-full h-full object-cover rounded-md" />
                             </CarouselItem>
                             <CarouselItem className="basis-xs h-48 pl-4">
-                                <Card className="h-full w-full">
-                                </Card>
+                                <Link href={"/course"}>
+                                    <img src={images.Carousel2.src} alt="carousel img" className="w-full h-full object-cover rounded-md" />
+                                </Link>
                             </CarouselItem>
                             <CarouselItem className="basis-xs h-48 pl-4">
-                                <Card className="h-full w-full">
-                                </Card>
-                            </CarouselItem>
-                            <CarouselItem className="basis-xs h-48 pl-4">
-                                <Card className="h-full w-full">
-                                </Card>
+                                <Link href={"/testseries"}>
+                                    <img src={images.Carousel3.src} alt="carousel img" className="w-full h-full object-cover rounded-md" />
+                                </Link>
                             </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="absolute p-5 md:p-9 left-0 top-1/2 transform -translate-y-1/2" />
