@@ -1,33 +1,33 @@
 'use client'
 
 import { GetQuestionPaper } from "@/api/test"
-import TestQuestionCard from "@/components/custom/TestQuestionCard"
+import PracticeQuestionCard from "@/components/custom/PracticeQuestionCard"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ChevronDown } from "lucide-react"
+import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Page = () => {
-    const { testId } = useParams()
+    const { practiceId } = useParams()
     const router = useRouter()
-    const id = Array.isArray(testId) ? testId[0] : testId
-    const [timeLeft, setTimeLeft] = useState<number>(2 * 60 * 60)
-    const [showCorrect, setShowCorrect] = useState(false)
+    const id = Array.isArray(practiceId) ? practiceId[0] : practiceId
+    const [timeLeft, setTimeLeft] = useState<number>(0)
     const questionRefs = useRef<(HTMLDivElement | null)[]>([])
     const [open, setOpen] = useState(false)
     const { data, isLoading } = GetQuestionPaper(id)
 
     useEffect(() => {
-        if (timeLeft <= 0) return
+        if (timeLeft >= (2 * 60 * 60)) return
 
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
-                if (prev <= 0) {
+                if (prev >= (2 * 60 * 60)) {
                     clearInterval(timer)
                     return 0
                 }
-                return prev - 1
+                return prev + 1
             })
         }, 1000)
 
@@ -46,10 +46,6 @@ const Page = () => {
             questionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" })
             setOpen(false)
         }
-    }
-
-    const handleShowResult = () => {
-        setShowCorrect(true)
     }
 
     if (isLoading) {
@@ -103,8 +99,7 @@ const Page = () => {
                     {
                         data?.map((question, index) => (
                             <div className="w-full flex justify-center items-center" ref={(el) => { questionRefs.current[index] = el }} key={index}>
-                                <TestQuestionCard
-                                    showCorrect={showCorrect}
+                                <PracticeQuestionCard
                                     key={index}
                                     question={question}
                                     total={data.length}
@@ -112,11 +107,6 @@ const Page = () => {
                             </div>
                         ))
                     }
-                </div>
-                <div className="w-full fixed bottom-0 left-0 border-t z-[99] backdrop-blur-md bg-background/50">
-                    <div className="w-full flex justify-center items-center py-3">
-                        <Button className="w-xs font-medium text-white" onClick={() => handleShowResult()}>Submit Paper</Button>
-                    </div>
                 </div>
             </div>
         </main >

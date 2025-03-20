@@ -69,7 +69,7 @@ const Page = () => {
                                 <div className="flex flex-row justify-between items-center">
                                     <Bookmark size={24} className="stroke-muted-foreground" />
                                     <div className="flex flex-row gap-2">
-                                        <Link href={`/test/${item.id}`}>
+                                        <Link href={`/practice/${item.id}`}>
                                             <Button variant={"outline"} className="font-medium text-muted-foreground" size={"sm"}>View Papeer</Button>
                                         </Link>
                                         <Link href={`/test/${item.id}`}>

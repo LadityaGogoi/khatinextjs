@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Bookmark } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import OptionCard from "./OptionCard";
 
 interface QuestionCardProps {
@@ -20,21 +18,17 @@ interface QuestionCardProps {
         is_attempted: boolean;
         is_bookmarked: boolean;
     };
+    showCorrect: boolean;
     total: number;
 }
 
-const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) => {
+const TestQuestionCard: React.FC<QuestionCardProps> = ({ question, showCorrect, total }) => {
     const [selectedOption, setSelectedOption] = useState<number | null>(null)
-    const [showCorrect, setShowCorrect] = useState<boolean>(false)
 
     const handleOptionSelect = (optionId: number) => {
         if (!showCorrect) {
             setSelectedOption(prev => (prev === optionId ? null : optionId));
         }
-    }
-
-    const checkAnswer = () => {
-        setShowCorrect(true)
     }
 
     return (
@@ -71,15 +65,9 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                         ))
                     }
                 </div>
-                <div className="flex justify-between items-center">
-                    <div>
-                        <Bookmark className="stroke-muted-foreground" />
-                    </div>
-                    <Button size={"sm"} className="text-white font-medium" disabled={showCorrect} onClick={checkAnswer}>Check Answer</Button>
-                </div>
             </CardContent>
         </Card>
     )
 }
 
-export default PracticeQuestionCard
+export default TestQuestionCard
