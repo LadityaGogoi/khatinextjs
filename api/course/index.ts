@@ -114,6 +114,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                         questions (
                             id,
                             question_heading,
+                            question_heading_type,
                             image,
                             index,
                             tags,
@@ -121,6 +122,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                                 id,
                                 index,
                                 text,
+                                text_type,
                                 isCorrect
                             ),
                             bookmark_questions ( id ),
@@ -143,6 +145,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                     questions: data.map(({ questions }: any) => ({
                         id: questions.id,
                         question_heading: questions.question_heading,
+                        question_heading_type: questions.question_heading_type,
                         image: questions.image,
                         index: questions.index,
                         tags: questions.tags,
@@ -158,6 +161,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                     .select(`
                         id,
                         question_heading,
+                        question_heading_type,
                         image,
                         index,
                         tags,
@@ -165,6 +169,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                             id,
                             index,
                             text,
+                            text_type,
                             isCorrect
                         ),
                         bookmark_questions ( id ),
@@ -185,6 +190,7 @@ export const GetLessonQuestionsByType = (lessonId?: string, userId?: string, typ
                     questions: data.map(question => ({
                         id: question.id,
                         question_heading: question.question_heading,
+                        question_heading_type: question.question_heading_type,
                         image: question.image,
                         index: question.index,
                         tags: question.tags,
