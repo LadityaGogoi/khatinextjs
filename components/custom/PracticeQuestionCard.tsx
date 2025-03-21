@@ -11,9 +11,11 @@ interface QuestionCardProps {
         id: string;
         index: number;
         question_heading: string;
+        question_heading_type: boolean;
         test_question_options: {
             index: number;
             text: string;
+            text_type: boolean;
             isCorrect: boolean
         }[];
         tags: string[];
@@ -53,7 +55,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                         }
                     </div>
                 </div>
-                <div className="text-base font-medium assamese-text text-muted-foreground">
+                <div className={`text-base font-medium ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`}>
                     {question.question_heading}
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -63,6 +65,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                                 key={index}
                                 id={option.index}
                                 option={option.text}
+                                option_type={option.text_type}
                                 isCorrect={option.isCorrect}
                                 isSelected={selectedOption === option.index}
                                 showCorrect={showCorrect}

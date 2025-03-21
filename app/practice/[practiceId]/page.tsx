@@ -91,7 +91,7 @@ const Page = () => {
                             </DialogContent>
                         </Dialog>
                         <div className="">
-                            <Button variant={"outline"} className="w-24 text-muted-foreground">{formatTime(timeLeft)}</Button>
+                            <Button onClick={() => console.log(data)} variant={"outline"} className="w-24 text-muted-foreground">{formatTime(timeLeft)}</Button>
                         </div>
                     </div>
                 </div>

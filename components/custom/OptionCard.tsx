@@ -1,5 +1,6 @@
 interface OptionCardProps {
     option: string;
+    option_type: boolean;
     id: number
     isCorrect: boolean;
     isSelected: boolean;
@@ -9,6 +10,7 @@ interface OptionCardProps {
 
 const OptionCard: React.FC<OptionCardProps> = ({
     option,
+    option_type,
     id,
     isCorrect,
     isSelected,
@@ -31,7 +33,7 @@ const OptionCard: React.FC<OptionCardProps> = ({
                 </div>
             )}
             <div className="p-0.5 border rounded-md w-7 h-7 text-center font-medium text-muted-foreground">{id}</div>
-            <div className="text-sm font-medium assamese-text text-muted-foreground">{option}</div>
+            <div className={`text-sm font-medium ${option_type ? 'assamese-text' : ''} text-muted-foreground`}>{option}</div>
         </div>
     )
 }
