@@ -22,14 +22,16 @@ interface QuestionCardProps {
     };
     showCorrect: boolean;
     total: number;
+    onOptionSelect: (optionId: number) => void
 }
 
-const TestQuestionCard: React.FC<QuestionCardProps> = ({ question, showCorrect, total }) => {
+const TestQuestionCard: React.FC<QuestionCardProps> = ({ question, showCorrect, total, onOptionSelect }) => {
     const [selectedOption, setSelectedOption] = useState<number | null>(null)
 
     const handleOptionSelect = (optionId: number) => {
         if (!showCorrect) {
             setSelectedOption(prev => (prev === optionId ? null : optionId));
+            onOptionSelect(optionId)
         }
     }
 

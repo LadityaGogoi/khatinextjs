@@ -29,8 +29,8 @@ interface FormData {
 
 const Page: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        email: "gogoiladitya@gmail.com",
-        password: "12345678"
+        email: "",
+        password: ""
     })
     const [showModal, setShowModal] = useState(false)
     const { mutate: signIn, error, isError, isPending, isSuccess } = useSignIn();

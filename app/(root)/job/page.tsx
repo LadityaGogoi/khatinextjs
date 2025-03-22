@@ -50,15 +50,14 @@ const Page = () => {
 
     return (
         <div className="flex flex-col bg-primary/5">
-            <div className="flex flex-col gap-5 items-center my-3 md:mt-24">
+            <div className="flex flex-col gap-5 items-center my-3 md:mt-24 w-full">
                 <SearchBar
                     placeholder="Search Jobs..."
                     filterOptions={["Class 8th Pass", "Class 10th Pass", "Class 12th Pass", "Degree Completed", "Masters Completed", "Arts Stream", "Science Stream", "Commerce Stream", "Grade IV", "Grade III", "Private Sector", "Govt. Job"]}
                     onFilterChange={handleFiltersChange}
                     selectedFilters={filters}
                 />
-
-                <div className="flex flex-col">
+                <div className="flex flex-col w-full">
                     {
                         isLoading ?
                             <div className="flex justify-center items-center w-full">
@@ -69,8 +68,8 @@ const Page = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                                     {
                                         jobs.map((item, index) => (
-                                            <Link key={index} href={`/job/${item.id}`}>
-                                                <Card className="w-xs p-0 rounded-md shadow-none">
+                                            <Link key={index} href={`/job/${item.id}`} className="w-11/12">
+                                                <Card className="p-0 rounded-md shadow-none">
                                                     <CardContent className="flex flex-col gap-2 p-3">
                                                         <div className="flex flex-row justify-between items-center">
                                                             <div className="flex flex-row gap-2">

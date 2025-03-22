@@ -2,9 +2,11 @@
 
 import { SignOut } from "@/api/user"
 import { Button } from "@/components/ui/button"
+import { useAuth } from "@/context/auth-provider"
 import { ArrowRight, Bookmark, FileQuestion, Mail, Settings, User } from "lucide-react"
 
 const Page = () => {
+    const { profile } = useAuth()
     return (
         <div className="flex flex-col bg-primary/5">
             <div className="flex flex-col mx-auto justify-center items-center gap-3 my-3 md:mt-24">
@@ -63,8 +65,8 @@ const Page = () => {
                         <ArrowRight className="stroke-muted-foreground" />
                     </div>
                 </div>
-                <div onClick={() => SignOut()}>
-                    <Button variant={"destructive"} className="font-semibold" size={"sm"}>Log Out</Button>
+                <div onClick={() => SignOut(profile.id)}>
+                    <Button variant={"destructive"} className="font-medium" size={"sm"}>Log Out</Button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/client"
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 
 interface SignUpFormData {
@@ -58,6 +58,31 @@ export async function signInApi(formData: SignInFormData) {
         throw new Error(error.message);
     }
 
+    const user = data?.user;
+
+    if (!user) {
+        throw new Error("Authentication failed")
+    }
+
+    const { data: activeSession } = await supabase
+        .from("active_session")
+        .select("*")
+        .eq("user_id", user.id)
+        .single()
+
+    if (activeSession) {
+        await supabase.auth.signOut();
+        throw new Error("Another session is already active")
+    }
+
+    const { error: sessionError } = await supabase
+        .from("active_session")
+        .insert([{ user_id: user.id }])
+
+    if (sessionError) {
+        throw new Error("Error creating user session")
+    }
+
     return data?.user;
 }
 
@@ -77,11 +102,37 @@ export async function GetUser() {
     return user
 }
 
-export async function SignOut() {
+export async function SignOut(userId?: string) {
     const supabase = createClient()
+
+    await supabase
+        .from("active_session")
+        .delete()
+        .eq("user_id", userId)
 
     await supabase.auth.signOut()
 
     // Revalidate cache to ensure UI updates
-    redirect('/login')
+    redirect('/register')
+}
+
+export const CheckActiveSession = (userId?: string) => {
+    const supabase = createClient()
+
+    return useQuery({
+        queryKey: ["sessioncheck", userId],
+        queryFn: async () => {
+            const { data, error } = await supabase
+                .from("active_session")
+                .select("*")
+                .eq("user_id", userId)
+                .single()
+
+            if (error) {
+                throw new Error(error.message)
+            }
+
+            return data
+        }
+    })
 }

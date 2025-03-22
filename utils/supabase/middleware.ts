@@ -31,7 +31,7 @@ export async function updateSession(request: NextRequest) {
     // Redirect unauthenticated users trying to access protected routes
     if (!user && !['/login', '/register', '/pricing', '/auth'].some(route => path.includes(route))) {
         const url = request.nextUrl.clone();
-        url.pathname = '/login';
+        url.pathname = '/register';
         return NextResponse.redirect(url);
     }
 

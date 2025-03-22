@@ -102,7 +102,7 @@ const Page: React.FC = () => {
                                 </div>
                             </div>
                             <CardFooter>
-                                <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary text-foreground font-semibold">
+                                <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary text-white font-semibold">
                                     Continue
                                 </Button>
                             </CardFooter>

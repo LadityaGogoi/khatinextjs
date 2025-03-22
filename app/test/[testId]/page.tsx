@@ -17,9 +17,21 @@ const Page = () => {
     const questionRefs = useRef<(HTMLDivElement | null)[]>([])
     const [open, setOpen] = useState(false)
     const { data, isLoading } = GetQuestionPaper(id)
+    const [selectedOptions, setSelectedOptions] = useState<Array<number | null>>(Array(data?.length || 0).fill(null))
+    const [results, setResults] = useState<{
+        correct: number;
+        incorrect: number;
+        unattempted: number;
+    } | null>(null)
+    const [showResult, setShowResult] = useState<boolean>(false)
+
 
     useEffect(() => {
-        if (timeLeft <= 0) return
+        if (timeLeft <= 0) {
+            handleShowResult()
+            setShowResult(true)
+            return
+        }
 
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
@@ -33,6 +45,14 @@ const Page = () => {
 
         return () => clearInterval(timer)
     }, [timeLeft])
+
+    const handleOptionsSelect = (index: number, optionId: number) => {
+        setSelectedOptions(prev => {
+            const newSelectedOptions = [...prev]
+            newSelectedOptions[index] = optionId
+            return newSelectedOptions
+        })
+    }
 
     const formatTime = (seconds: number) => {
         const hrs = Math.floor(seconds / 3600)
@@ -49,7 +69,40 @@ const Page = () => {
     }
 
     const handleShowResult = () => {
-        setShowCorrect(true)
+        let correct = 0;
+        let incorrect = 0;
+        let unattempted = 0;
+
+        data?.forEach((question, index) => {
+            const selectedOptionId = selectedOptions[index];
+
+            if (selectedOptionId === null) {
+                unattempted++;
+            } else {
+                const selectedOption = question.test_question_options.find(
+                    (option: any) => option.id === selectedOptionId
+                );
+
+                if (selectedOption?.isCorrect) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            }
+        });
+
+        setResults({ correct, incorrect, unattempted });
+        setShowCorrect(true);
+    }
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col bg-primary/5 my-3">
+                <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
+                    <div className="text-center text-sm text-muted-foreground">| loading |</div>
+                </div>
+            </div>
+        )
     }
 
     if (isLoading) {
@@ -108,6 +161,7 @@ const Page = () => {
                                     key={index}
                                     question={question}
                                     total={data.length}
+                                    onOptionSelect={(optionId) => handleOptionsSelect(index, optionId)}
                                 />
                             </div>
                         ))
@@ -115,7 +169,24 @@ const Page = () => {
                 </div>
                 <div className="w-full fixed bottom-0 left-0 border-t z-[99] backdrop-blur-md bg-background/50">
                     <div className="w-full flex justify-center items-center py-3">
-                        <Button className="w-xs font-medium text-white" onClick={() => handleShowResult()}>Submit Paper</Button>
+                        <Dialog open={showResult} onOpenChange={setShowResult}>
+                            <DialogTrigger asChild>
+                                <Button className="w-xs font-medium text-white" onClick={handleShowResult}>
+                                    Submit Paper
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent className="w-11/12 md:w-md">
+                                <DialogHeader>
+                                    <DialogTitle className="text-center font-medium">Test Results</DialogTitle>
+                                    <DialogDescription className="text-center">Here are your results</DialogDescription>
+                                </DialogHeader>
+                                <div className="flex flex-col gap-4 mt-4">
+                                    <div className="text-green-600 text-center">Correct: {results?.correct}</div>
+                                    <div className="text-red-600 text-center">Incorrect: {results?.incorrect}</div>
+                                    <div className="text-gray-600 text-center">Unattempted: {results?.unattempted}</div>
+                                </div>
+                            </DialogContent>
+                        </Dialog>
                     </div>
                 </div>
             </div>

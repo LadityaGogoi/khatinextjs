@@ -201,9 +201,9 @@ export default function Home() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                                     {
                                         news.map((item, index) => (
-                                            <Link key={index} href={`/news/${item.id}`}>
+                                            <Link key={index} href={`/news/${item.id}`} className="w-11/12 md:w-xs">
                                                 <Card className="p-0">
-                                                    <CardContent className="w-xs flex flex-col gap-1 p-3">
+                                                    <CardContent className="flex flex-col gap-1 p-3">
                                                         <div className="flex flex-row justify-start items-center gap-2">
                                                             <div className="p-1.5 bg-primary/10 rounded-full">
                                                                 <img src={item.creator_image} alt="logo" className="w-7 h-7" />

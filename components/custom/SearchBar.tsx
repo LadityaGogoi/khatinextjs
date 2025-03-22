@@ -42,13 +42,8 @@ const SearchBar: React.FC<FilterProps> = ({
     }
 
     return (
-        <Card className="p-0 rounded-full lg:w-md md:my-0 shadow-none">
+        <Card className="p-0 rounded-full md:my-0 shadow-none">
             <CardContent className="flex flex-row justify-between items-center p-0.5">
-                {/* <input
-                    type="text"
-                    placeholder={placeholder}
-                    className="text-base font-semibold w-full text-foreground focus:outline-none focus:ring-0"
-                /> */}
                 <Dialog>
                     <DialogTrigger>
                         <div className="rounded-full p-3 bg-primary/10">
@@ -58,7 +53,7 @@ const SearchBar: React.FC<FilterProps> = ({
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle className="text-center">filters</DialogTitle>
+                            <DialogTitle className="text-center font-medium">Filters</DialogTitle>
                             <DialogDescription className="text-center">select your favorite</DialogDescription>
                         </DialogHeader>
                         <div className="flex flex-row flex-wrap gap-1.5">
@@ -70,7 +65,7 @@ const SearchBar: React.FC<FilterProps> = ({
                         </div>
                         <DialogFooter className="justify-center">
                             <DialogClose asChild>
-                                <Button className="font-bold text-white" onClick={applyFilters}>Apply Filters</Button>
+                                <Button className="font-medium text-white" onClick={applyFilters}>Apply Filters</Button>
                             </DialogClose>
                         </DialogFooter>
                     </DialogContent>
