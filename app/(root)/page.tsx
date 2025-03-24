@@ -208,7 +208,7 @@ export default function Home() {
                                                             <div className="p-1.5 bg-primary/10 rounded-full">
                                                                 <img src={item.creator_image} alt="logo" className="w-7 h-7" />
                                                             </div>
-                                                            <div className="text-xs font-bold">{item.creator_name}</div>
+                                                            <div className="text-sm transform scale-y-125 text-muted-foreground font-semibold">{item.creator_name}</div>
                                                             <div className="text-xs text-muted-foreground">{item.tag}</div>
                                                         </div>
                                                         <div className="flex flex-row justify-between items-center">

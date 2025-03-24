@@ -8,7 +8,7 @@ import ContextProgressProvider from "@/context/progress-provider";
 const manropeSans = Outfit({
   variable: "--font-manrope-sans",
   subsets: ["latin"],
-  weight: ["100", "400", "700"]
+  // weight: ["100", "400", "700"]
 });
 
 const assameseSans = Noto_Serif_Bengali({

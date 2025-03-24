@@ -8,11 +8,14 @@ interface QuestionCardProps {
     question: {
         id: string;
         index: number;
+        question_paragraph?: string;
+        image?: string;
         question_heading: string;
         question_heading_type: boolean;
         test_question_options: {
             index: number;
             text: string;
+            image: string;
             text_type: boolean;
             isCorrect: boolean
         }[];
@@ -39,19 +42,33 @@ const TestQuestionCard: React.FC<QuestionCardProps> = ({ question, showCorrect, 
         <Card className="p-0 w-11/12 md:w-md">
             <CardContent className="p-3 space-y-2">
                 <div className="flex flex-row justify-between items-center">
-                    <div className="text-sm text-muted-foreground">{question.index}/{total}</div>
+                    <div className="text-sm font-semibold transform scale-y-125 text-muted-foreground">{question.index}/{total}</div>
                     <div className="flex flex-row flex-wrap">
                         {
                             question.tags.map((tag: string, index: number) => (
                                 <div
-                                    className="text-sm text-primary"
+                                    className="text-xs text-primary transform scale-y-150 font-medium"
                                     key={index}
                                 >#{tag}</div>
                             ))
                         }
                     </div>
                 </div>
-                <div className={`text-base font-medium ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`}>
+                {
+                    question?.question_paragraph && (
+                        <div className={`text-base transform scale-y-110 tracking-wider ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`}>
+                            {question.question_paragraph}
+                        </div>
+                    )
+                }
+                {
+                    question?.image && (
+                        <div className="flex justify-center items-center">
+                            <img alt="newsimage" src={question?.image} className="rounded-md" />
+                        </div>
+                    )
+                }
+                <div className={`text-base font-semibold transform scale-y-110 tracking-wider ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`}>
                     {question.question_heading}
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -61,6 +78,7 @@ const TestQuestionCard: React.FC<QuestionCardProps> = ({ question, showCorrect, 
                                 key={index}
                                 id={option.index}
                                 option={option.text}
+                                image={option.image}
                                 option_type={option.text_type}
                                 isCorrect={option.isCorrect}
                                 isSelected={selectedOption === option.index}

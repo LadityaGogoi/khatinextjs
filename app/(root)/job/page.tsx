@@ -77,7 +77,7 @@ const Page = () => {
                                                                     <img src={item?.image} alt="logo" className="w-full h-full object-cover" />
                                                                 </div>
                                                                 <div className="flex flex-col justify-between items-start">
-                                                                    <div className="font-semibold text-base text-muted-foreground capitalize">{item.title}</div>
+                                                                    <div className="font-semibold text-sm transform scale-y-150 text-muted-foreground capitalize">{item.title}</div>
                                                                     <div className="flex flex-row justify-center items-center">
                                                                         <Landmark className="stroke-muted-foreground" size={16} />
                                                                         <div className="text-xs font-medium text-muted-foreground">{item.organization}</div>
@@ -102,7 +102,7 @@ const Page = () => {
                                                         <div className="flex flex-row flex-wrap gap-1.5">
                                                             {
                                                                 item.tags.map((tag: string, index: number) => (
-                                                                    <div key={index} className="text-xs font-semibold py-1.5 px-3 border-2 border-primary/50 text-muted-foreground rounded-full">{tag}</div>
+                                                                    <div key={index} className="text-xs transform scale-y-125 py-1.5 px-3 border-[1.5px] border-primary/50 text-muted-foreground rounded-full">{tag}</div>
                                                                 ))
                                                             }
                                                         </div>

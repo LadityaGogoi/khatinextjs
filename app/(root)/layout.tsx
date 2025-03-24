@@ -28,7 +28,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         <AuthProvider>
             <main className="w-full h-full mx-auto bg-background">
                 <div className="flex flex-col w-full">
-                    <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[99] border-b md:border-dashed flex flex-row justify-between items-center bg-background/50">
+                    <nav className="py-1.5 w-full px-1.5 md:px-5 md:fixed top-0 left-0 backdrop-blur-md z-[10] border-b md:border-dashed flex flex-row justify-between items-center bg-background/50">
                         <div className="assamese-text font-bold text-lg text-primary md:w-28">খাতি</div>
                         <NavigationMenu className="hidden md:flex">
                             <NavigationMenuList className="w-sm rounded-full py-1.5 px-3 border flex flex-row justify-between items-center">
@@ -86,7 +86,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                             </Toggle>
                         </div>
                     </nav>
-                    <nav className="w-full fixed bottom-0 left-0 block md:hidden z-[99]">
+                    <nav className="w-full fixed bottom-0 left-0 block md:hidden z-[10]">
                         <div className="flex justify-between items-center bg-background/50 backdrop-blur-md border rounded-full py-3 px-3 mx-1.5 mb-3">
                             <Link href="/">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">

@@ -60,8 +60,8 @@ const Page = () => {
                                     <div className="p-1 bg-primary/10 rounded-full">
                                         <img src={lesson.image} alt="logo" className="w-9 h-9" />
                                     </div>
-                                    <div className="flex-1 flex-col items-start">
-                                        <div className="font-semibold text-base text-muted-foreground">{lesson.name}</div>
+                                    <div className="flex-1 flex-col items-start gap-2">
+                                        <div className="text-sm font-semibold text-muted-foreground transform scale-y-150">{lesson.name}</div>
                                         <div className="flex flex-row w-full justify-between items-center">
                                             <div className="flex flex-row gap-0.5">
                                                 <BookOpen size={16} className="text-muted-foreground" />

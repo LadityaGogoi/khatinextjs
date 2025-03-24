@@ -49,8 +49,8 @@ const Page = () => {
                         <Card key={index} className="p-0 w-xs lg:w-md">
                             <div className="flex flex-col gap-2 p-3 relative">
                                 <div className="flex flex-row justify-between items-center">
-                                    <div className="text-muted-foreground text-base font-medium">{item.name}</div>
-                                    <div className="text-muted-foreground text-base font-medium">{item.date}</div>
+                                    <div className="text-muted-foreground text-sm">{item.name}</div>
+                                    <div className="text-muted-foreground text-sm font-medium">{item.date}</div>
                                 </div>
                                 <div className="flex flex-row w-full justify-between items-center">
                                     <div className="flex flex-row gap-0.5 justify-center items-center">

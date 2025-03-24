@@ -35,7 +35,7 @@ const TestSeries = () => {
                                                 <img src={item?.image} alt="logo" className="w-7 h-7" />
                                             </div>
                                             <div className="flex flex-col justify-between items-start">
-                                                <div className="font-semibold text-base text-muted-foreground">{item.name}</div>
+                                                <div className="text-sm font-semibold text-muted-foreground transform scale-y-150">{item.name}</div>
                                                 <div className="flex flex-row">
                                                     <Landmark className="stroke-muted-foreground" size={16} />
                                                     <div className="text-xs text-muted-foreground">{item.organization}</div>

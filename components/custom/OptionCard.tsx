@@ -1,5 +1,6 @@
 interface OptionCardProps {
-    option: string;
+    option?: string | null;
+    image?: string | null;
     option_type: boolean;
     id: number
     isCorrect: boolean;
@@ -10,6 +11,7 @@ interface OptionCardProps {
 
 const OptionCard: React.FC<OptionCardProps> = ({
     option,
+    image,
     option_type,
     id,
     isCorrect,
@@ -33,7 +35,18 @@ const OptionCard: React.FC<OptionCardProps> = ({
                 </div>
             )}
             <div className="p-0.5 border rounded-md w-7 h-7 text-center font-medium text-muted-foreground">{id}</div>
-            <div className={`text-sm font-medium ${option_type ? 'assamese-text' : ''} text-muted-foreground`}>{option}</div>
+            {
+                option && (
+                    <div className={`text-base tracking-wider ${option_type ? 'assamese-text' : ''} text-muted-foreground`}>{option}</div>
+                )
+            }
+            {
+                image && (
+                    <div className="flex justify-start items-center">
+                        <img alt="newsimage" src={image} className="rounded-md" />
+                    </div>
+                )
+            }
         </div>
     )
 }
