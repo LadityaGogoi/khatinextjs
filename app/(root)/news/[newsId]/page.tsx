@@ -79,7 +79,7 @@ const Page = () => {
                 }
                 <div className="text-xl font-bold text-muted-foreground assamese-text">{data?.heading}</div>
                 <div className="w-full h-48 md:h-64">
-                    <img alt="newsimage" src={data?.image} className="rounded-md h-full w-full bject-cover" />
+                    <img alt="newsimage" src={data?.image} className="rounded-md h-full w-full object-cover" />
                 </div>
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-row items-center gap-2">

@@ -113,15 +113,15 @@ const Page: React.FC = () => {
                     <Dialog open={showModal}>
                         <DialogContent>
                             <DialogHeader>
-                                <DialogTitle className="text-center font-semibold text-lg">Congratulations</DialogTitle>
-                                <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
-                                <Button className="font-bold text-white" onClick={() => window.location.reload()}>Go to Home</Button>
-                            </DialogHeader>
-                        </DialogContent>
-                    </Dialog>
-                </Card>
-            </div>
+                                <DialogTitle className="text-lg text-center font-semibold transform scale-y-125 text-primary">Congratulations</DialogTitle>
+                            <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
+                            <Button className="font-bold text-white" onClick={() => window.location.reload()}>Go to Home</Button>
+                        </DialogHeader>
+                    </DialogContent>
+                </Dialog>
+            </Card>
         </div>
+        </div >
     )
 }
 

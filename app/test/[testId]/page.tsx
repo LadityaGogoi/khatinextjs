@@ -130,7 +130,7 @@ const Page = () => {
                             </DialogTrigger>
                             <DialogContent className="w-11/12 md:w-md">
                                 <DialogHeader>
-                                    <DialogTitle className="text-center text-muted-foreground font-semibold">Question List</DialogTitle>
+                                    <DialogTitle className="text-center font-semibold transform scale-y-125 text-primary">Question List</DialogTitle>
                                     <DialogDescription className="text-center">select question index</DialogDescription>
                                 </DialogHeader>
                                 <div className="flex flex-row flex-wrap gap-1.5 mt-4">
@@ -177,7 +177,7 @@ const Page = () => {
                             </DialogTrigger>
                             <DialogContent className="w-11/12 md:w-md">
                                 <DialogHeader>
-                                    <DialogTitle className="text-center font-medium">Test Results</DialogTitle>
+                                    <DialogTitle className="text-center font-semibold transform scale-y-125 text-primary">Test Results</DialogTitle>
                                     <DialogDescription className="text-center">Here are your results</DialogDescription>
                                 </DialogHeader>
                                 <div className="flex flex-col gap-4 mt-4">

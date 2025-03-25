@@ -72,9 +72,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                         </div>
                     )
                 }
-                <div className={`text-base font-semibold transform scale-y-110 tracking-wider ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`}>
-                    {question.question_heading}
-                </div>
+                <div className={`text-base font-semibold transform scale-y-110 tracking-wider ${question.question_heading_type ? 'assamese-text' : ''} text-muted-foreground`} dangerouslySetInnerHTML={{ __html: question.question_heading }} />
                 <div className="flex flex-col gap-1.5">
                     {
                         question.test_question_options.map((option: any, index: number) => (

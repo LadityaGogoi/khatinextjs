@@ -53,7 +53,7 @@ const SearchBar: React.FC<FilterProps> = ({
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle className="text-center font-medium">Filters</DialogTitle>
+                            <DialogTitle className="text-center font-semibold transform scale-y-125 text-primary">Filters</DialogTitle>
                             <DialogDescription className="text-center">select your favorite</DialogDescription>
                         </DialogHeader>
                         <div className="flex flex-row flex-wrap gap-1.5">

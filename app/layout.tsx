@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anek_Bangla, Hind_Siliguri, Inter_Tight, Manjari, Mina, Noto_Sans_Bengali, Noto_Serif_Bengali, Outfit, Poppins, Tiro_Bangla, Urbanist } from "next/font/google";
+import { Noto_Serif_Bengali, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
@@ -8,7 +8,6 @@ import ContextProgressProvider from "@/context/progress-provider";
 const manropeSans = Outfit({
   variable: "--font-manrope-sans",
   subsets: ["latin"],
-  // weight: ["100", "400", "700"]
 });
 
 const assameseSans = Noto_Serif_Bengali({
