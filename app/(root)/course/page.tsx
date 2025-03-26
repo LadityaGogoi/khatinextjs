@@ -49,7 +49,7 @@ export default function Course() {
                                         <img src={data?.image} alt="logo" className="w-9 h-9" />
                                     </div>
                                     <div className="flex flex-col justify-between items-start">
-                                        <div className="font-semibold text-base text-muted-foreground">{data?.name}</div>
+                                        <div className="font-semibold text-base text-muted-foreground transform scale-y-125">{data?.name}</div>
                                         <div className="flex flex-row">
                                             <Landmark size={16} className="stroke-muted-foreground" />
                                             <div className="text-xs text-muted-foreground">{data?.organization}</div>
@@ -61,7 +61,7 @@ export default function Course() {
                                 </button>
                             </CardContent>
                         </Card>
-                        <div className="text-base font-medium assamese-text text-muted-foreground">{data?.description}</div>
+                        <div className="text-base font-medium assamese-text text-muted-foreground tracking-wide">{data?.description}</div>
                     </CardContent>
                 </Card>
             </div>
@@ -73,7 +73,7 @@ export default function Course() {
                                 <Link key={index} href={`/course/${subject.id}`}>
                                     <Card className="w-xs lg:w-md p-0">
                                         <CardContent className="p-3 flex flex-col gap-2 justify-center items-center">
-                                            <div className="text-base font-semibold text-muted-foreground">{subject.name}</div>
+                                            <div className="text-base font-semibold text-muted-foreground transform scale-y-125 tracking-wide">{subject.name}</div>
                                             <div className="flex flex-row w-full justify-between items-center">
                                                 <div className="flex flex-row gap-0.5">
                                                     <BookOpen className="stroke-muted-foreground" size={16} />
@@ -96,7 +96,7 @@ export default function Course() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 min-w-xs">
-                    <div className="text-destructive font-extrabold text-lg text-center">-Notice-</div>
+                    <div className="text-destructive font-bold text-lg text-center transform scale-y-150">{profile?.exam} Notice</div>
                     <div className="flex flex-col gap-2">
                         {
                             data?.exam_notice_board.map((notice, index) => (
@@ -104,10 +104,10 @@ export default function Course() {
                                     <Card className="w-xs p-0 m-0 relative">
                                         <CardContent className="p-3">
                                             <div className="flex flex-col gap-2 justify-center items-center">
-                                                <div className="text-sm font-semibold text-muted-foreground">{notice.heading}</div>
-                                                <div className="text-xs line-clamp-2 text-muted-foreground">{notice.description}</div>
+                                                <div className="text-sm font-semibold text-muted-foreground transform scale-y-125 tracking-wider">{notice.heading}</div>
+                                                <div className="text-sm line-clamp-2 text-muted-foreground">{notice.description}</div>
                                             </div>
-                                            <div className="absolute top-0 right-0 rounded-bl-full bg-destructive text-xs">
+                                            <div className="absolute top-0 right-0 rounded-bl-full bg-destructive text-white pl-1.5 text-xs">
                                                 New
                                             </div>
                                         </CardContent>

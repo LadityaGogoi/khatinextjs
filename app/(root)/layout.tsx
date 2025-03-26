@@ -76,7 +76,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </NavigationMenu>
                         <div className="flex flex-row justify-center items-center gap-2">
                             <Link href="/pricing">
-                                <div className="text-sm text-muted-foreground hover:text-foreground">Premium</div>
+                                <div className="text-base transform scale-y-125 font-semibold text-yellow-500 hover:text-foreground">Premium</div>
                             </Link>
                             <Toggle
                                 pressed={theme === "dark"}

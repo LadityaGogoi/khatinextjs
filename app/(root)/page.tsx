@@ -169,7 +169,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex flex-col w-full md:w-2xl lg:w-5xl mx-auto">
-                    <div className="text-center font-bold text-lg text-foreground mt-3" onClick={() => console.log(news)}>Latest News</div>
+                    <div className="text-center font-bold text-lg text-primary transform scale-y-150 mt-3" onClick={() => console.log(news)}>Latest News</div>
                     <ScrollArea className="whitespace-nowrap">
                         <div className="flex space-x-4 p-2 mb-3">
                             {
