@@ -63,11 +63,11 @@ const Page = () => {
             <div className="flex flex-col w-full justify-center items-center">
                 <div className="w-full fixed top-0 left-0 border-b z-[10] backdrop-blur-md bg-background/50">
                     <div className="w-11/12 md:w-md flex flex-row justify-between items-center mx-auto py-3">
-                        <Button onClick={() => router.back()} className="w-24 text-xs font-semibold transform scale-y-125 text-white" variant={"destructive"} size={"sm"}>Exit Test</Button>
+                        <Button onClick={() => router.back()} className="w-24 text-xs font-semibold transform scale-y-110 text-white" variant={"destructive"} size={"sm"}>Exit Test</Button>
                         <Dialog open={open} onOpenChange={setOpen}>
                             <DialogTrigger asChild>
                                 <div className="flex flex-row justify-center items-center">
-                                    <div className="text-primary font-medium transform scale-y-125">Menu</div>
+                                    <div className="text-primary font-medium transform scale-y-110">Menu</div>
                                     <ChevronDown size={24} className="stroke-primary stroke-3" />
                                 </div>
                             </DialogTrigger>
@@ -91,7 +91,7 @@ const Page = () => {
                             </DialogContent>
                         </Dialog>
                         <div className="">
-                            <Button variant={"outline"} className="w-24 text-xs font-semibold transform scale-y-125 text-muted-foreground">{formatTime(timeLeft)}</Button>
+                            <Button variant={"outline"} className="w-24 text-xs font-semibold transform scale-y-110 text-muted-foreground">{formatTime(timeLeft)}</Button>
                         </div>
                     </div>
                 </div>

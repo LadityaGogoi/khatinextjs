@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Serif_Bengali, Outfit } from "next/font/google";
+import { Manjari, Noto_Serif_Bengali, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
@@ -8,6 +8,12 @@ import ContextProgressProvider from "@/context/progress-provider";
 const manropeSans = Outfit({
   variable: "--font-manrope-sans",
   subsets: ["latin"],
+});
+
+const manjariSans = Manjari({
+  variable: "--font-manjari-sans",
+  subsets: ["latin"],
+  weight: ["100", "400", "700"]
 });
 
 const assameseSans = Noto_Serif_Bengali({
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${manropeSans.variable} ${assameseSans.variable} antialiased`}
+        className={`${manropeSans.variable} ${assameseSans.variable} ${manjariSans.variable} antialiased`}
       >
         <QueryProvider>
           <ContextProgressProvider>
