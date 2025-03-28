@@ -42,7 +42,7 @@ export default function RootLayout({
           <ContextProgressProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme={"dark"}
+              defaultTheme={"light"}
               enableSystem
               disableTransitionOnChange
             >
