@@ -68,33 +68,6 @@ const Page = () => {
         }
     }
 
-    // const handleShowResult = () => {
-    //     let correct = 0;
-    //     let incorrect = 0;
-    //     let unattempted = 0;
-
-    //     data?.forEach((question, index) => {
-    //         const selectedOptionId = selectedOptions[index];
-
-    //         if (selectedOptionId === null) {
-    //             unattempted++;
-    //         } else {
-    //             const selectedOption = question.test_question_options.find(
-    //                 (option: any) => option.id === selectedOptionId
-    //             );
-
-    //             if (selectedOption?.isCorrect) {
-    //                 correct++;
-    //             } else {
-    //                 incorrect++;
-    //             }
-    //         }
-    //     });
-
-    //     setResults({ correct, incorrect, unattempted });
-    //     setShowCorrect(true);
-    // }
-
     const handleShowResult = () => {
         let correct = 0;
         let incorrect = 0;
@@ -105,22 +78,17 @@ const Page = () => {
 
             if (selectedOptionId === null) {
                 unattempted++;
-                console.log(null)
             } else {
-                const selectedOption = question.test_question_options.find(
-                    (option: any) => option.id == selectedOptionId
-                );
-                console.log(selectedOption)
+                const correctOption = question?.test_question_options.find((option: any) => option.isCorrect)
+                // console.log(correctOption.index == selectedOptionId)
 
-                if (selectedOption && selectedOption.is_correct) { // Ensure 'is_correct' matches the API response
-                    correct++;
+                if (correctOption.index == selectedOptionId) {
+                    correct++
                 } else {
-                    incorrect++;
+                    incorrect++
                 }
             }
         });
-        console.log(selectedOptions)
-
         setResults({ correct, incorrect, unattempted });
         setShowCorrect(true);
     };
@@ -210,11 +178,11 @@ const Page = () => {
                                     <DialogTitle className="text-center font-semibold transform scale-y-125 text-primary">Test Results</DialogTitle>
                                     <DialogDescription className="text-center">Coming Soon</DialogDescription>
                                 </DialogHeader>
-                                {/* <div className="flex flex-col gap-4 mt-4">
+                                <div className="flex flex-col gap-4 mt-4">
                                     <div className="text-green-600 text-center">Correct: {results?.correct}</div>
-                                    <div className="text-red-600 text-center">Incorrect: {results?.incorrect}</div>
+                                    <div className="text-red-600 text-center">Incorrect: {selectedOptions?.length - (results?.unattempted || 0) - (results?.correct || 0)}</div>
                                     <div className="text-gray-600 text-center">Unattempted: {results?.unattempted}</div>
-                                </div> */}
+                                </div>
                             </DialogContent>
                         </Dialog>
                     </div>
