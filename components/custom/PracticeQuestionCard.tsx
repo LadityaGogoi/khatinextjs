@@ -46,12 +46,12 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
         <Card className="p-0 w-11/12 md:w-md">
             <CardContent className="p-3 space-y-2">
                 <div className="flex flex-row justify-between items-center">
-                    <div className="text-sm manjari-text font-bold transform scale-y-150 text-muted-foreground">{question.index}/{total}</div>
+                    <div className="text-sm english-text font-bold transform scale-y-150 text-muted-foreground">{question.index}/{total}</div>
                     <div className="flex flex-row flex-wrap">
                         {
                             question.tags.map((tag: string, index: number) => (
                                 <div
-                                    className="text-sm manjari-text text-primary font-bold"
+                                    className="text-sm english-text text-primary font-bold"
                                     key={index}
                                 >#{tag}</div>
                             ))
@@ -60,7 +60,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                 </div>
                 {
                     question?.question_paragraph && (
-                        <div className={`text-base  ${question.question_heading_type ? 'assamese-text' : 'manjari-text'} text-muted-foreground`}>
+                        <div className={`text-base  ${question.question_heading_type ? 'assamese-text' : 'english-text'} text-muted-foreground`}>
                             {question.question_paragraph}
                         </div>
                     )
@@ -72,7 +72,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
                         </div>
                     )
                 }
-                <div className={`text-base font-semibold ${question.question_heading_type ? 'assamese-text' : 'manjari-text'} text-muted-foreground`} dangerouslySetInnerHTML={{ __html: question.question_heading }} />
+                <div className={`text-base font-semibold ${question.question_heading_type ? 'assamese-text' : 'english-text'} text-muted-foreground`} dangerouslySetInnerHTML={{ __html: question.question_heading }} />
                 <div className="flex flex-col gap-1.5">
                     {
                         question.test_question_options.map((option: any, index: number) => (

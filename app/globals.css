@@ -12,12 +12,8 @@ body {
   font-family: var(--font-assamese-sans), sans-serif;
 }
 
-.manjari-text {
-  font-family: var(--font-manjari-sans), sans-serif;
-}
-
 .english-text {
-  font-family: var(--font-manrope-sans), sans-serif;
+  font-family: var(--font-manjari-sans), sans-serif;
 }
 
 @theme inline {

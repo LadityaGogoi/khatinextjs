@@ -37,7 +37,7 @@ const OptionCard: React.FC<OptionCardProps> = ({
             <div className="p-0.5 border rounded-md w-7 h-7 text-center font-medium text-muted-foreground">{id}</div>
             {
                 option && (
-                    <div className={`text-base ${option_type ? 'assamese-text' : 'manjari-text'} text-muted-foreground`}>{option}</div>
+                    <div className={`text-base ${option_type ? 'assamese-text' : 'english-text'} text-muted-foreground`}>{option}</div>
                 )
             }
             {
