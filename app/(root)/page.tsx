@@ -121,6 +121,11 @@ export default function Home() {
                                     <img src={images.Carousel3.src} alt="carousel img" className="w-full h-full object-cover rounded-md" />
                                 </Link>
                             </CarouselItem>
+                            <CarouselItem className="basis-xs h-48 pl-4">
+                                <Link href={"/course"}>
+                                    <img src={images.Carousel4.src} alt="carousel img" className="w-full h-full object-cover rounded-md" />
+                                </Link>
+                            </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="absolute p-5 md:p-9 left-0 top-1/2 transform -translate-y-1/2" />
                         <CarouselNext className="absolute p-5 md:p-9 right-0 top-1/2 transform -translate-y-1/2" />

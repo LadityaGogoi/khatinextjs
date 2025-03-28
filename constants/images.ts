@@ -4,6 +4,7 @@ import AssamPolice from '@/assets/images/police.png'
 import Carousel1 from '@/assets/images/carousel1.png'
 import Carousel2 from '@/assets/images/carousel2.png'
 import Carousel3 from '@/assets/images/carousel3.png'
+import Carousel4 from '@/assets/images/carousel4.png'
 
 export default {
     Logo,
@@ -11,5 +12,6 @@ export default {
     AssamPolice,
     Carousel1,
     Carousel2,
-    Carousel3
+    Carousel3,
+    Carousel4
 }
