@@ -24,6 +24,7 @@ const TestSeries = () => {
     return (
         <div className="flex flex-col bg-primary/5">
             <div className="flex flex-col mx-auto justify-center items-center gap-2 my-3 md:mt-24">
+                <div className="text-lg transform scale-y-125 text-destructive font-semibold">testseries are undergoing maintenance</div>
                 {
                     data?.map((item, index) => (
                         <Link key={index} href={`/testseries/${item.id}`}>
