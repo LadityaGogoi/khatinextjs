@@ -27,7 +27,7 @@ async function signUpApi(formData: SignUpFormData) {
         email: credentials.email,
         password: credentials.password,
         options: {
-            data: { username: credentials.username },
+            data: { name: credentials.username },
         },
     });
 

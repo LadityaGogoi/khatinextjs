@@ -93,17 +93,19 @@ const Page: React.FC = () => {
                                         <Label htmlFor="password">Password</Label>
                                         <Input id="password" type="password" placeholder="Enter Your Password" required onChange={handleChange} />
                                     </div>
-                                    <div className="text-center text-sm">
-                                        Already have an account?{" "}
+                                    <div className="text-center text-sm flex flex-row justify-center items-center mb-1.5">
+                                        <div>
+                                            Already have an account?{" "}
+                                        </div>
                                         <a href="/login" className="underline underline-offset-4">
-                                            Sign In
+                                            Login
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <CardFooter>
                                 <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary text-white font-semibold">
-                                    Continue
+                                    Create Account
                                 </Button>
                             </CardFooter>
                         </form>

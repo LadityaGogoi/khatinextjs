@@ -28,15 +28,15 @@ export default function Course() {
                     <HeroVideoDialog
                         className="block dark:hidden"
                         animationStyle="top-in-bottom-out"
-                        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-                        thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+                        videoSrc="https://www.youtube.com/embed/OgVsq_B9D3c"
+                        thumbnailSrc="https://zdkrsecozabtluyupcxi.supabase.co/storage/v1/object/sign/image/videothumbnail%20(1).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZS92aWRlb3RodW1ibmFpbCAoMSkucG5nIiwiaWF0IjoxNzQzMTYxNTA2LCJleHAiOjE3NzQ2OTc1MDZ9.P9D3mrZJvYh4g-oPMyL9Jl9Lf0fMq0tguXcvOGmr5qQ"
                         thumbnailAlt="Hero Video"
                     />
                     <HeroVideoDialog
                         className="hidden dark:block"
                         animationStyle="top-in-bottom-out"
-                        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-                        thumbnailSrc="https://startup-template-sage.vercel.app/hero-dark.png"
+                        videoSrc="https://www.youtube.com/embed/OgVsq_B9D3c"
+                        thumbnailSrc="https://zdkrsecozabtluyupcxi.supabase.co/storage/v1/object/sign/image/videothumbnail%20(1).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZS92aWRlb3RodW1ibmFpbCAoMSkucG5nIiwiaWF0IjoxNzQzMTYxNTA2LCJleHAiOjE3NzQ2OTc1MDZ9.P9D3mrZJvYh4g-oPMyL9Jl9Lf0fMq0tguXcvOGmr5qQ"
                         thumbnailAlt="Hero Video"
                     />
                 </div>

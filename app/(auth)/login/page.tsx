@@ -94,17 +94,19 @@ const Page: React.FC = () => {
                                         <Label htmlFor="password">Password</Label>
                                         <Input id="password" type="password" placeholder="Enter Your Password" required onChange={handleChange} />
                                     </div>
-                                    <div className="text-center text-sm">
-                                        Don&apos;t have an account?{" "}
+                                    <div className="text-center text-sm flex flex-row justify-center items-center mb-1.5">
+                                        <div>
+                                            Don&apos;t have an account?{" "}
+                                        </div>
                                         <a href="/register" className="underline underline-offset-4">
-                                            Sign up
+                                            Create Account
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <CardFooter>
                                 <Button disabled={isPending} type="submit" variant="default" className="w-full bg-primary font-bold text-white">
-                                    Continue
+                                    Login
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12L10 18V6L16 12Z"></path></svg>
                                 </Button>
                             </CardFooter>
@@ -114,13 +116,13 @@ const Page: React.FC = () => {
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle className="text-lg text-center font-semibold transform scale-y-125 text-primary">Congratulations</DialogTitle>
-                            <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
-                            <Button className="font-bold text-white" onClick={() => window.location.reload()}>Go to Home</Button>
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>
-            </Card>
-        </div>
+                                <DialogDescription className="text-center assamese-text text-base font-semibold text-muted-foreground">আপুনি সফলতাৰে লগইন কৰিছে।</DialogDescription>
+                                <Button className="font-bold text-white" onClick={() => window.location.reload()}>Go to Home</Button>
+                            </DialogHeader>
+                        </DialogContent>
+                    </Dialog>
+                </Card>
+            </div>
         </div >
     )
 }

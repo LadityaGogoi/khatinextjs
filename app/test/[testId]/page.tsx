@@ -12,7 +12,7 @@ const Page = () => {
     const { testId } = useParams()
     const router = useRouter()
     const id = Array.isArray(testId) ? testId[0] : testId
-    const [timeLeft, setTimeLeft] = useState<number>(2 * 60 * 60)
+    const [timeLeft, setTimeLeft] = useState<number>(60 * 60)
     const [showCorrect, setShowCorrect] = useState(false)
     const questionRefs = useRef<(HTMLDivElement | null)[]>([])
     const [open, setOpen] = useState(false)
@@ -68,6 +68,33 @@ const Page = () => {
         }
     }
 
+    // const handleShowResult = () => {
+    //     let correct = 0;
+    //     let incorrect = 0;
+    //     let unattempted = 0;
+
+    //     data?.forEach((question, index) => {
+    //         const selectedOptionId = selectedOptions[index];
+
+    //         if (selectedOptionId === null) {
+    //             unattempted++;
+    //         } else {
+    //             const selectedOption = question.test_question_options.find(
+    //                 (option: any) => option.id === selectedOptionId
+    //             );
+
+    //             if (selectedOption?.isCorrect) {
+    //                 correct++;
+    //             } else {
+    //                 incorrect++;
+    //             }
+    //         }
+    //     });
+
+    //     setResults({ correct, incorrect, unattempted });
+    //     setShowCorrect(true);
+    // }
+
     const handleShowResult = () => {
         let correct = 0;
         let incorrect = 0;
@@ -78,22 +105,25 @@ const Page = () => {
 
             if (selectedOptionId === null) {
                 unattempted++;
+                console.log(null)
             } else {
                 const selectedOption = question.test_question_options.find(
-                    (option: any) => option.id === selectedOptionId
+                    (option: any) => option.id == selectedOptionId
                 );
+                console.log(selectedOption)
 
-                if (selectedOption?.isCorrect) {
+                if (selectedOption && selectedOption.is_correct) { // Ensure 'is_correct' matches the API response
                     correct++;
                 } else {
                     incorrect++;
                 }
             }
         });
+        console.log(selectedOptions)
 
         setResults({ correct, incorrect, unattempted });
         setShowCorrect(true);
-    }
+    };
 
     if (isLoading) {
         return (
@@ -178,13 +208,13 @@ const Page = () => {
                             <DialogContent className="w-11/12 md:w-md">
                                 <DialogHeader>
                                     <DialogTitle className="text-center font-semibold transform scale-y-125 text-primary">Test Results</DialogTitle>
-                                    <DialogDescription className="text-center">Here are your results</DialogDescription>
+                                    <DialogDescription className="text-center">Coming Soon</DialogDescription>
                                 </DialogHeader>
-                                <div className="flex flex-col gap-4 mt-4">
+                                {/* <div className="flex flex-col gap-4 mt-4">
                                     <div className="text-green-600 text-center">Correct: {results?.correct}</div>
                                     <div className="text-red-600 text-center">Incorrect: {results?.incorrect}</div>
                                     <div className="text-gray-600 text-center">Unattempted: {results?.unattempted}</div>
-                                </div>
+                                </div> */}
                             </DialogContent>
                         </Dialog>
                     </div>

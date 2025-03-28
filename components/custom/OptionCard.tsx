@@ -21,7 +21,7 @@ const OptionCard: React.FC<OptionCardProps> = ({
 }) => {
     return (
         <div
-            className={`relative flex flex-row justify-start items-center gap-1.5 border ${isSelected ? 'border-primary' : ''} rounded-md p-1.5`}
+            className={`relative flex flex-row justify-start items-center gap-1.5 ${isSelected ? 'border-[2px] border-primary' : 'border-[2px]'} rounded-md p-1.5`}
             onClick={() => onSelect(id)}
         >
             {isCorrect && showCorrect && (
