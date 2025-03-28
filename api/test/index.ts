@@ -31,6 +31,7 @@ export const GetTestPapers = (seriesId?: string) => {
                 .from("test")
                 .select('*')
                 .eq("testseries_id", seriesId)
+                .order("index", { ascending: true })
 
             if (error) {
                 throw new Error(error.message)
