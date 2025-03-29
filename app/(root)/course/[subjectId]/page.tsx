@@ -53,7 +53,7 @@ const Page = () => {
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
-                <div className="text-center" onClick={() => console.log(profile)}>test</div>
+                <div className="text-center text-destructive font-semibold transform scale-y-150 mb-3" onClick={() => console.log(profile)}>under maintenance - due to high traffic</div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                     {data?.map((lesson, index) => (
                         <div onClick={() => router.push('/plan')} key={index}>
