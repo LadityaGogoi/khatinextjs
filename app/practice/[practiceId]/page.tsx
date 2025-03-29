@@ -5,7 +5,6 @@ import PracticeQuestionCard from "@/components/custom/PracticeQuestionCard"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ChevronDown } from "lucide-react"
-import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 

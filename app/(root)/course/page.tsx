@@ -73,7 +73,7 @@ export default function Course() {
                                 <Link key={index} href={`/course/${subject.id}`}>
                                     <Card className="w-xs lg:w-md p-0">
                                         <CardContent className="p-3 flex flex-col gap-2 justify-center items-center">
-                                            <div className="text-base font-semibold text-muted-foreground transform scale-y-125 tracking-wide">{subject.name}</div>
+                                            <div className="text-sm font-semibold text-muted-foreground transform scale-y-125 tracking-wide text-center">{subject.name}</div>
                                             <div className="flex flex-row w-full justify-between items-center">
                                                 <div className="flex flex-row gap-0.5">
                                                     <BookOpen className="stroke-muted-foreground" size={16} />

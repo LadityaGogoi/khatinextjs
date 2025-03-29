@@ -54,7 +54,7 @@ const Page = () => {
                         </Breadcrumb>
                     </div>
                     <div className="w-24 h-24 rounded-full">
-                        <img alt="newsimage" src={data?.image} className="w-full h-full object-cover" />
+                        <img alt="newsimage" src={data?.image} className="w-full h-full object-contain" />
                     </div>
                     <div className="text-base font-semibold text-muted-foreground">{data?.title}</div>
                     <div className="flex flex-row gap-2 justify-center items-center">

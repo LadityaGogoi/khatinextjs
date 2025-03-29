@@ -74,13 +74,13 @@ const Page = () => {
                                                         <div className="flex flex-row justify-between items-center">
                                                             <div className="flex flex-row gap-2">
                                                                 <div className="p-1.5 bg-primary/10 rounded-full w-9 h-9">
-                                                                    <img src={item?.image} alt="logo" className="w-full h-full object-cover" />
+                                                                    <img src={item?.image} alt="logo" className="w-full h-full object-contain" />
                                                                 </div>
-                                                                <div className="flex flex-col justify-between items-start">
-                                                                    <div className="font-semibold text-sm transform scale-y-150 text-muted-foreground capitalize">{item.title}</div>
+                                                                <div className="flex flex-col justify-between items-start gap-1.5">
+                                                                    <div className="font-semibold text-sm transform scale-y-150 text-muted-foreground capitalize line-clamp-1">{item.title}</div>
                                                                     <div className="flex flex-row justify-center items-center">
                                                                         <Landmark className="stroke-muted-foreground" size={16} />
-                                                                        <div className="text-xs font-medium text-muted-foreground">{item.organization}</div>
+                                                                        <div className="text-xs font-medium text-muted-foreground line-clamp-1">{item.organization}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -102,7 +102,7 @@ const Page = () => {
                                                         <div className="flex flex-row flex-wrap gap-1.5">
                                                             {
                                                                 item.tags.map((tag: string, index: number) => (
-                                                                    <div key={index} className="text-xs transform scale-y-125 py-1.5 px-3 border-[1.5px] border-primary/50 text-muted-foreground rounded-full">{tag}</div>
+                                                                    <div key={index} className="text-xs transform scale-y-125 py-1.5 px-3 border-[1.5px] border-primary/50 text-muted-foreground mb-1.5 rounded-full">{tag}</div>
                                                                 ))
                                                             }
                                                         </div>

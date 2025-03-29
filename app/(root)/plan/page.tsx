@@ -18,7 +18,7 @@ const Page = () => {
                         <CardDescription className="text-sm font-bold assamese-text">নূন্যতম খৰচেৰে আপোনাৰ প্ৰস্তুতি আৰম্ভ কৰক</CardDescription>
                         <CardTitle className="text-xl">	₹49</CardTitle>
                         <CardContent className="flex flex-col gap-2">
-                            <Button className="w-full  font-bold text-white" size={"lg"}>Get Started</Button>
+                            <Button className="w-full font-bold text-white" size={"lg"}>Get Started</Button>
                             <div className="flex flex-col gap-1.5">
                                 <div className="flex flex-row justify-start items-center gap-1">
                                     <Check className="stroke-muted-foreground stroke-2" />

@@ -11,18 +11,19 @@ import {
 } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth-provider";
 import { GetLessonBySubject } from "@/api/course";
 
 const Page = () => {
     const { subjectId } = useParams()
+    const { profile, loading } = useAuth()
     const id = Array.isArray(subjectId) ? subjectId[0] : subjectId
-    const { profile } = useAuth()
+    const router = useRouter()
 
-    const { data, isLoading } = GetLessonBySubject(id, profile.id)
+    const { data, isLoading } = GetLessonBySubject(id, profile?.id)
 
-    if (isLoading) {
+    if (isLoading || loading) {
         return (
             <div className="flex flex-col bg-primary/5 my-3">
                 <div className="flex flex-col lg:flex-row mx-auto gap-2 md:mt-24">
@@ -52,16 +53,17 @@ const Page = () => {
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
+                <div className="text-center" onClick={() => console.log(profile)}>test</div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center">
                     {data?.map((lesson, index) => (
-                        <Link key={index} href={`/course/${subjectId}/${lesson.id}`}>
+                        <div onClick={() => router.push('/plan')} key={index}>
                             <Card className="p-0">
                                 <div className="w-xs flex flex-row gap-2 justify-between items-center p-3">
                                     <div className="p-1 bg-primary/10 rounded-full">
                                         <img src={lesson.image} alt="logo" className="w-9 h-9" />
                                     </div>
                                     <div className="flex-1 flex-col items-start gap-2">
-                                        <div className="text-sm font-semibold text-muted-foreground transform scale-y-150">{lesson.name}</div>
+                                        <div className="text-xs font-semibold text-muted-foreground transform scale-y-150 mb-2">{lesson.name}</div>
                                         <div className="flex flex-row w-full justify-between items-center">
                                             <div className="flex flex-row gap-0.5">
                                                 <BookOpen size={16} className="text-muted-foreground" />
@@ -69,7 +71,7 @@ const Page = () => {
                                             </div>
                                             <div className="flex flex-row gap-0.5">
                                                 <Timer size={16} className="text-muted-foreground" />
-                                                <div className="text-xs text-muted-foreground">{lesson.timeRequired}</div>
+                                                <div className="text-xs text-muted-foreground">{lesson.timeRequired} hr</div>
                                             </div>
                                             <div className="flex flex-row gap-0.5">
                                                 <FileQuestion size={16} className="text-muted-foreground" />
@@ -82,7 +84,7 @@ const Page = () => {
                                     </div>
                                 </div>
                             </Card>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>
