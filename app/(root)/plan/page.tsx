@@ -23,7 +23,7 @@ const Page = () => {
                                 <div className="flex flex-col gap-1.5">
                                     <div className="flex flex-row justify-start items-center gap-1.5">
                                         <Check className="stroke-green-500 stroke-2 size-7" />
-                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start"><span className="english-text">₹49 (9394879962) </span>এই নম্বৰত পঠিয়াওক।</div>
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start"><span className="english-text">₹49 (provided soon..) </span>এই নম্বৰত পঠিয়াওক।</div>
                                     </div>
                                     <div className="flex flex-row justify-start items-center gap-1.5">
                                         <Check className="stroke-green-500 stroke-2 size-7" />
@@ -31,7 +31,7 @@ const Page = () => {
                                     </div>
                                     <div className="flex flex-row justify-start items-center gap-1">
                                         <Check className="stroke-green-500 stroke-2 size-7" />
-                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start">আপোনাৰ <span className="english-text">name, email, password (9394879962)</span> এই নম্বৰত পঠিয়াওক ।</div>
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start">আপোনাৰ <span className="english-text">name, email, password (provided soon...)</span> এই নম্বৰত পঠিয়াওক ।</div>
                                     </div>
                                     <div className="flex flex-row justify-start items-center gap-1">
                                         <Check className="stroke-green-500 stroke-2 size-7" />
