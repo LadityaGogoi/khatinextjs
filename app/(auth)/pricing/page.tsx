@@ -18,23 +18,25 @@ const Page = () => {
                         <CardDescription className="text-sm font-bold assamese-text">নূন্যতম খৰচেৰে আপোনাৰ প্ৰস্তুতি আৰম্ভ কৰক</CardDescription>
                         <CardTitle className="text-xl">	₹49</CardTitle>
                         <CardContent className="flex flex-col gap-2">
-                            <Button className="w-full  font-bold text-white" size={"lg"}>Get Started</Button>
-                            <div className="flex flex-col gap-1.5">
-                                <div className="flex flex-row justify-start items-center gap-1">
-                                    <Check className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs text-muted-foreground">Previous Year Question Paper</div>
-                                </div>
-                                <div className="flex flex-row justify-start items-center gap-1">
-                                    <Check className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs text-muted-foreground">Mock Tests</div>
-                                </div>
-                                <div className="flex flex-row justify-start items-center gap-1">
-                                    <Check className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs text-muted-foreground">Unlimited Questions Access</div>
-                                </div>
-                                <div className="flex flex-row justify-start items-center gap-1">
-                                    <Check className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs text-muted-foreground">Access to latest jobs in the market</div>
+                            <div>
+                                <Button className="w-full font-semibold text-muted-foreground mb-3" variant={"outline"} size={"lg"}>Payment Process</Button>
+                                <div className="flex flex-col gap-1.5">
+                                    <div className="flex flex-row justify-start items-center gap-1.5">
+                                        <Check className="stroke-green-500 stroke-2 size-7" />
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start"><span className="english-text">₹49 (9394879962) </span>এই নম্বৰত পঠিয়াওক।</div>
+                                    </div>
+                                    <div className="flex flex-row justify-start items-center gap-1.5">
+                                        <Check className="stroke-green-500 stroke-2 size-7" />
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start">পেমেণ্টৰ স্ক্ৰিনশ্বট লওক।</div>
+                                    </div>
+                                    <div className="flex flex-row justify-start items-center gap-1">
+                                        <Check className="stroke-green-500 stroke-2 size-7" />
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start">আপোনাৰ <span className="english-text">name, email, password (9394879962)</span> এই নম্বৰত পঠিয়াওক ।</div>
+                                    </div>
+                                    <div className="flex flex-row justify-start items-center gap-1">
+                                        <Check className="stroke-green-500 stroke-2 size-7" />
+                                        <div className="text-sm text-muted-foreground assamese-text w-full text-start">৬ ঘণ্টাৰ ভিতৰত আপোনাৰ প্ৰিমিয়াম একাউণ্ট সক্রিয় কৰা হ’ব ।</div>
+                                    </div>
                                 </div>
                             </div>
                         </CardContent>
