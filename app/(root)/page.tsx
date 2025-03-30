@@ -86,20 +86,22 @@ export default function Home() {
         <div className="w-full">
             <div className="flex flex-col md:pt-32 w-full pb-4 bg-primary/5">
                 <div className="w-full py-6 pb-10 text-center flex-col gap-6 flex">
-                    <h1 className="hidden md:block">
-                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-bold tracking-tighter md:text-center text-5xl md:text-5xl">
-                            ALL In One App
+                    <h1 className="">
+                        <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-bold tracking-tighter md:text-center text-4xl md:text-5xl">
+                            #1
                             <br />
-                            For Assamese Students
+                            ALL In One App For
+                            <br />
+                            Assamese Students
                         </span>
                     </h1>
-                    <p className="max-w-2xl text-center assamese-text text-muted-foreground text-lg md:text-xl font-medium mx-auto px-4 sm:px-0">
+                    <p className="max-w-2xl text-center assamese-text text-muted-foreground text-lg md:text-xl font-medium mx-auto px-4 sm:px-0 hidden md:block">
                         জটিল বিষয়সমূহ সৰল কৰা ➜ অধ্যয়ন টোকা সৃষ্টি কৰা ➜ প্ৰশ্নকাকত সৃষ্টি কৰা ➜ পিডিএফ অনুবাদ কৰিবলৈ সৰল কৰা ➜ কুইজ আৰু ফ্লেছকাৰ্ড সৃষ্টি কৰা
                     </p>
                     <div className="w-xs mx-auto">
                         <a href="#">
-                            <Button variant="default" size="lg" className="w-full bg-primary text-sm font-medium text-white">
-                                Download Khati App
+                            <Button variant="default" size="lg" className="w-full bg-primary text-sm transform scale-y-125 font-medium text-white">
+                                App will be available Soon...
                                 <FolderDown className="stroke-3" />
                             </Button>
                         </a>

@@ -87,35 +87,35 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </div>
                     </nav>
                     <nav className="w-full fixed bottom-0 left-0 block md:hidden z-[10]">
-                        <div className="flex justify-between items-center bg-background/50 backdrop-blur-md border rounded-full py-3 px-3 mx-1.5 mb-3">
+                        <div className="flex justify-between items-center bg-primary/90 backdrop-blur-md border border-primary/50 rounded-full py-3 px-3 mx-1.5 mb-3">
                             <Link href="/">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <House className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-medium text-muted-foreground">Home</div>
+                                    <House className="stroke-white stroke-2" />
+                                    <div className="text-xs font-medium text-white">Home</div>
                                 </Button>
                             </Link>
                             <Link href="/job">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <Briefcase className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-medium text-muted-foreground">Job Board</div>
+                                    <Briefcase className="stroke-white stroke-2" />
+                                    <div className="text-xs font-medium text-white">Job Board</div>
                                 </Button>
                             </Link>
                             <Link href="/course">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <Tv className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-medium text-muted-foreground">Course</div>
+                                    <Tv className="stroke-white stroke-2" />
+                                    <div className="text-xs font-medium text-white">Course</div>
                                 </Button>
                             </Link>
                             <Link href="/testseries">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <BookOpen className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-medium text-muted-foreground">Test Series</div>
+                                    <BookOpen className="stroke-white stroke-2" />
+                                    <div className="text-xs font-medium text-white">Test Series</div>
                                 </Button>
                             </Link>
                             <Link href="/profile">
                                 <Button variant={"ghost"} size="icon" className="flex flex-col justify-center items-center">
-                                    <User className="stroke-muted-foreground stroke-2" />
-                                    <div className="text-xs font-medium text-muted-foreground">Profile</div>
+                                    <User className="stroke-white stroke-2" />
+                                    <div className="text-xs font-medium text-white">Profile</div>
                                 </Button>
                             </Link>
                         </div>

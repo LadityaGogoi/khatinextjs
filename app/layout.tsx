@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import QueryProvider from "@/context/query-provider";
 import ContextProgressProvider from "@/context/progress-provider";
-import { Analytics } from '@vercel/analytics/next'
 
 const manropeSans = Outfit({
   variable: "--font-manrope-sans",
@@ -47,7 +46,6 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}
-              <Analytics />
             </ThemeProvider>
           </ContextProgressProvider>
         </QueryProvider>
