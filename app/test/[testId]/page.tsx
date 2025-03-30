@@ -17,14 +17,19 @@ const Page = () => {
     const questionRefs = useRef<(HTMLDivElement | null)[]>([])
     const [open, setOpen] = useState(false)
     const { data, isLoading } = GetQuestionPaper(id)
-    const [selectedOptions, setSelectedOptions] = useState<Array<number | null>>(Array(data?.length || 0).fill(null))
+    const [selectedOptions, setSelectedOptions] = useState<Array<number | null>>([]);
     const [results, setResults] = useState<{
         correct: number;
         incorrect: number;
         unattempted: number;
     } | null>(null)
-    const [showResult, setShowResult] = useState<boolean>(false)
 
+    const [showResult, setShowResult] = useState<boolean>(false)
+    useEffect(() => {
+        if (data) {
+            setSelectedOptions(Array(data.length).fill(null));
+        }
+    }, [data]);
 
     useEffect(() => {
         if (timeLeft <= 0) {
