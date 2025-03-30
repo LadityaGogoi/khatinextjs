@@ -99,12 +99,12 @@ export default function Home() {
                         জটিল বিষয়সমূহ সৰল কৰা ➜ অধ্যয়ন টোকা সৃষ্টি কৰা ➜ প্ৰশ্নকাকত সৃষ্টি কৰা ➜ পিডিএফ অনুবাদ কৰিবলৈ সৰল কৰা ➜ কুইজ আৰু ফ্লেছকাৰ্ড সৃষ্টি কৰা
                     </p>
                     <div className="w-xs mx-auto">
-                        <a href="#">
-                            <Button variant="default" size="lg" className="w-full bg-primary text-sm transform scale-y-125 font-medium text-white">
-                                App will be available Soon...
-                                <FolderDown className="stroke-3" />
-                            </Button>
-                        </a>
+                        {/* <a href="#"> */}
+                        <Button variant="default" size="lg" className="w-full bg-primary text-sm transform scale-y-125 font-medium text-white" onClick={() => console.log(profile)}>
+                            App will be available Soon...
+                            <FolderDown className="stroke-3" />
+                        </Button>
+                        {/* </a> */}
                     </div>
                 </div>
                 <div className="w-full pt-5 md:pt-0">
