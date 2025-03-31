@@ -50,7 +50,7 @@ const PracticeQuestionCard: React.FC<QuestionCardProps> = ({ question, total }) 
         <Card className="p-0 w-11/12 md:w-md">
             <CardContent className="p-3 space-y-2">
                 <div className="flex flex-row justify-between items-center">
-                    <div className="text-sm english-text font-bold transform scale-y-150 text-muted-foreground">{question.index}/{total}</div>
+                    <div className="text-sm english-text font-bold transform scale-y-150 text-muted-foreground">{question.index}/50</div>
                     <div className="flex flex-row flex-wrap">
                         {
                             question.tags.map((tag: string, index: number) => (
