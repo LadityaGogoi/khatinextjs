@@ -68,24 +68,24 @@ export async function signInApi(formData: SignInFormData) {
         throw new Error("Authentication failed")
     }
 
-    const { data: activeSession } = await supabase
-        .from("active_session")
-        .select("*")
-        .eq("user_id", user.id)
-        .single()
+    // const { data: activeSession } = await supabase
+    //     .from("active_session")
+    //     .select("*")
+    //     .eq("user_id", user.id)
+    //     .single()
 
-    if (activeSession) {
-        await supabase.auth.signOut();
-        throw new Error("Another session is already active")
-    }
+    // if (activeSession) {
+    //     await supabase.auth.signOut();
+    //     throw new Error("Another session is already active")
+    // }
 
-    const { error: sessionError } = await supabase
-        .from("active_session")
-        .insert([{ user_id: user.id }])
+    // const { error: sessionError } = await supabase
+    //     .from("active_session")
+    //     .insert([{ user_id: user.id }])
 
-    if (sessionError) {
-        throw new Error("Error creating user session")
-    }
+    // if (sessionError) {
+    //     throw new Error("Error creating user session")
+    // }
 
     return data?.user;
 }
