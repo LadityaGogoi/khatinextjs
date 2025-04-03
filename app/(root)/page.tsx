@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Bookmark, BookOpen, Briefcase, Eye, FileQuestion, FolderDown, Rss, Timer } from "lucide-react";
+import { Bookmark, BookOpen, Briefcase, Eye, FileQuestion, FolderDown, Rss, Timer, Zap } from "lucide-react";
 
 import {
     Carousel,
@@ -85,6 +85,12 @@ export default function Home() {
     return (
         <div className="w-full">
             <div className="flex flex-col md:pt-32 w-full pb-4 bg-primary/5">
+                <div className="w-full text-sm text-white text-center underline py-1.5 bg-primary/90 flex flex-row justify-center items-center gap-1.5">
+                    <Zap className="w-5 h-5 stroke-white" />
+                    <a href="https://chat.whatsapp.com/Fw08JIXfIyo3jR7x4bHEZZ">
+                        Join our Whatsapp Group
+                    </a>
+                </div>
                 <div className="w-full py-6 pb-10 text-center flex-col gap-6 flex">
                     <h1 className="">
                         <span className="bg-clip-text text-transparent bg-[linear-gradient(74deg,#4285f4_0%,#9b72cb_33%,#d96570_66%,#4285f4_100%)] relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2 text-balance text-left font-bold tracking-tighter md:text-center text-4xl md:text-5xl">
